@@ -5,20 +5,20 @@
 
 	$sql = "SELECT agent_id FROM agent WHERE agent_id = '$username'";
 	$result = $conn->query($sql);
-	if ($result->num_rows > 0) {
-     
-    }
-    else {
-	header("Location: clientHome.php");
-   }
+// 	if ($result->num_rows > 0) {
+//         header("Location: home.php");
+//     }
+//     else {
+// 	header("Location: index.php");
+//    }
 	
 ?>
 
 <body>
     <div id="wrapper">
-        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom:2">
+        <nav id="top-nav" class="navbar navbar-default navbar-cls-top" role="navigation" style="margin-bottom:2">
 	
-            <div class="navbar-header">
+            <div id="logo" class="navbar-header">
                 	
                 <a class="navbar-brand" href="index.php">Surya Life Insurance</a>
             </div>
@@ -30,7 +30,7 @@
             </div>
         </nav>
         <!-- /. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
+        <nav id="side-nav" class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>

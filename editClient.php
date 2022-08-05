@@ -94,7 +94,7 @@ tr:nth-child(even) {
 	
 	//                       checking if agent is authorized to edit or not  
 	$temp_id="";
-	$master_id="ahmed";
+	$master_id="jyotirana";
 	$sql = "SELECT agent_id from client where client_id='$client_id'";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_assoc()) {
