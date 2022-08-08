@@ -1,10 +1,10 @@
 <?php
 	session_start();
 	include'connection.php';
-	$username = $_SESSION["username"];
+	$username = $_SESSION["email"];
 
-	$sql = "SELECT agent_id FROM agent WHERE agent_id = '$username'";
-	$result = $conn->query($sql);
+	// $sql = "SELECT agent_id FROM agent WHERE agent_id = '$username'";
+	// $result = $conn->query($sql);
 // 	if ($result->num_rows > 0) {
 //         header("Location: home.php");
 //     }
@@ -17,15 +17,15 @@
 <body>
     <div id="wrapper">
         <nav id="top-nav" class="navbar navbar-default navbar-cls-top" role="navigation" style="margin-bottom:2">
-	
+
             <div id="logo" class="navbar-header">
-                	
-                <a class="navbar-brand" href="index.php">Surya Life Insurance</a>
+
+                <a class="navbar-brand" href="index.php">Health Insurance Board</a>
             </div>
 
             <div class="header-right">
-			
-                 <a href="<?php echo "logout.php" ?>" class="btn btn-danger" title="Logout">Logout</a>
+
+                <a href="<?php echo "logout.php" ?>" class="btn btn-danger" title="Logout">Logout</a>
 
             </div>
         </nav>
@@ -39,48 +39,44 @@
 
                             <div class="inner-text">
                                 <?php
-									if(!isset($_SESSION["username"])){
+									if(!isset($_SESSION["email"])){
 										header("Location: index.php");
 									}else {
-										echo "welcome, ".$_SESSION["username"];
+										echo "welcome, ".$_SESSION["email"];
 									}
 								?>
-                            <br />
-                              
+                                <br />
+
                             </div>
                         </div>
 
                     </li>
 
 
-                 <li>
-                      <a href="client.php">Clients</a >  
-                 </li> 
-                 <li>
-                      <a href="agent.php">Agents</a>
-                            
-                 </li>   
-                 <li>
-                      <a href="policy.php">Policy</a>
-                          
-                 </li>     
-                 <li>
-                      <a href="nominee.php">Nominee</a>
-                            
-                 </li> 
-                 <li>
-                      <a href="payment.php">Payments</a>
-                            
-                 </li>    
-                    
-                     
+                    <li>
+                        <a href="client.php">Clients</a>
+                    </li>
+                    <li>
+                        <a href="agent.php">Agents</a>
+
+                    </li>
+                    <li>
+                        <a href="policy.php">Policy</a>
+
+                    </li>
+                    <li>
+                        <a href="nominee.php">Nominee</a>
+
+                    </li>
+                    <li>
+                        <a href="payment.php">Payments</a>
+
+                    </li>
+
+
                 </ul>
 
             </div>
-		
+
 
         </nav>
-		 
-		  
-	
-   

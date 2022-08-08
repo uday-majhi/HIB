@@ -68,27 +68,22 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h1 class="page-head-line">Add Client</h1>
+            <h1 class="page-head-line">Family Informations</h1>
 
-            <form action="insertClient.php" method="post" enctype="multipart/form-data">
-                Insurance no.: <input type="number" name="insurance_no" required><br>
-                Full Name: <input type="text" name="full_name" required><br>
-                Email: <input type="email" name="email" required><br>
-                Password: <input type="text" name="password" required><br>
-                Gender: <select name="gender" id="gender">
+            <form action="insertFamilyMember.php" method="post" enctype="multipart/form-data">
+                Insurance no.: <input type="number" name="family_member_insurance_no" required> <br>
+                Name: <input type="text" name="family_member_name" required><br>
+                Gender: <select name="gender" id="family_member_gender">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="others">Others</option>
                 </select>
-                Birth Date: <input type="date" name="birth_date" required><br>
-                Citizenship no.: <input type="text" name="citizenship_no" required><br>
-                Mobile no.: <input type="number" name="mobile_no" required><br>
-                Address: <input type="text" name="address" required><br>
-                Policy ID: <input type="text" name="policy_id" required><br>
-                Agent ID: <input type="text" name="agent_id" value="<?php echo $_SESSION["email"]; ?>" required><br>
-                Image <input class="img" type="file" name="client_image" required> </br>
+                Birth Date: <input type="date" name="family_member_birth_date" required><br>
+                Identity no: <input type="text" name="family_member_identity_no" required><br>
+                Relationship: <input type="text" name="family_member_relationship" required><br>
+                Image: <input class="img" type="file" name="family_member_image" required> <br>
                 First Service Point:
-                <select name="fsp" id="Fsp">
+                <select name="family_member_fsp" id="Fsp">
                     <optgroup label="FSP">
                         <option value="BPKIHS">B.P.K.I.H.S</option>
                         <option value="Duhabi">Duhabi Nagar Aspatal</option>
@@ -102,23 +97,9 @@
                     </optgroup>
                 </select>
 
-                <input type="submit" name="insertClient" value="Submit" />
-
+                <input type="submit" name="insertFamilyMember" value="Submit" />
             </form>
 
         </div>
-
     </div>
-    <!-- /. PAGE WRAPPER  -->
-
-
 </div>
-<!-- /. WRAPPER  -->
-
-
-
-
-
-</body>
-
-</html>

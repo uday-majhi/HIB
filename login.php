@@ -3,33 +3,45 @@
 	include 'connection.php';
 	
 	
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		$username = $_POST["username"];
+		$email = $_POST["email"];
 		$password = $_POST["password"];
-	}
+
+	$hashed_password = md5($password);
+
+	echo "runs...";	
+	$agent_login_query = "SELECT email, full_name from agent where email='$email' AND password='$hashed_password'";
+	$client_login_query = "SELECT email, full_name from client where email='$email' AND password='$hashed_password'";
+		
+	try{
+		$agent_login_result_set= mysqli_query($conn, $agent_login_query);
+		$agent_num_rows= mysqli_num_rows($agent_login_result_set);
 	
-	$sql = "SELECT agent_password from agent where agent_id='$username'";
-	$result = $conn->query($sql);        
-
-    while($row = $result->fetch_assoc()) {
-		if($password == $row["agent_password"]){
-			echo "welcome you have successfully logeed in";
-			$_SESSION["username"] = $username;
-			header("Location: home.php");
-		}
-    }
-	$sql = "SELECT client_password from client where client_id='$username'";
-	$result = $conn->query($sql);        
-
-    while($row = $result->fetch_assoc()) {
-		if($password == $row["client_password"]){
-			echo "welcome you have successfully logeed in";
-			$_SESSION["username"] = $username;
+		if($agent_num_rows>0){
+			echo "Agent Logged In!";
+			$_SESSION["email"] = $email;
+			$_SESSION["full_name"] = $full_name;
 			header("Location: clientHome.php");
-		}
-    }
+		}else{
+			echo "checking client...";
+			$client_login_result_set= mysqli_query($conn, $client_login_query);
+			$client_num_rows= mysqli_num_rows($client_login_result_set);
 	
-	if(!isset($_SESSION["username"])){
+			if($client_num_rows>0){
+				echo "client loggedin!";
+				$_SESSION["email"] = $email;
+				$_SESSION["full_name"] = $full_name;
+				header("Location: clientHome.php");
+			}else{
+				echo "Not found!";
+			}
+	
+		}
+	}catch(Exception $e){
+		echo $e;
+	}
+
+	exit();
+	if(!isset($_SESSION["email"])){
 		header("Location: index.php");
 	}
 ?>

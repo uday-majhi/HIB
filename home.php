@@ -1,62 +1,64 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+    <style>
+        input[type=text],
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
-input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-.searchBar {
-	cursor: pointer;
-	width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-	
-}
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
 
 
-</style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .searchBar {
+            cursor: pointer;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-sizing: border-box;
+
+        }
+    </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
@@ -66,88 +68,89 @@ tr:nth-child(even) {
     <link href="assets/css/custom.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
-<?php include 'header.php'; 
+<?php include 'header.php';
 
 ?>
-       
-        <div id="page-wrapper">
-            
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-head-line">Dash Board
-						
-						</h1>
 
-	  <div class= "searchBar">
-		  <form action="search.php" method="post">
-          <input type="text" name="key"><br>
-          <input class="searchBtn" type="submit" value="SEARCH">
-		  </br>
-          </form>
-	  </div>
+<div id="page-wrapper">
 
-	
-				
-				<br>
-				<br>
-				
-			
-                <div class="col">
-                    <div ">
-                        <div class="main-box mb-red">
-                            <a href="#">
-                                <h5>
-								<?php
-				                     $sql = "SELECT count(*) AS c FROM client";
-	                                 $result = $conn->query($sql);
-		
-	                                 while($row = $result->fetch_assoc()) {
-				                     echo "Total clients: ";
-	                                 echo $row["c"];
-	                                 }
-				                     ?>
-								</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div ">
-                        <div class="main-box mb-dull">
-                            <a href="#">
-                                <h5>
-		                             <?php
-				                     $sql = "SELECT count(*) AS c FROM payment";
-	                                 $result = $conn->query($sql);
-		
-	                                 while($row = $result->fetch_assoc()) {
-				                     echo "Payment Records: ";
-	                                 echo $row["c"];
-	                                 }
-				                     ?>
-                                
-								</h5>
-                            </a>
-                        </div>
-                    </div>
-                    <div ">
-                        <div class="main-box mb-pink">
-                            <a href="#">
-                                <h5>
-								<?php
-				                     $sql = "SELECT count(*) AS c FROM agent";
-	                                 $result = $conn->query($sql);
-		
-	                                 while($row = $result->fetch_assoc()) {
-				                     echo "Total agents: ";
-	                                 echo $row["c"];
-	                                 }
-				                     ?>
-								</h5>
-                            </a>
-                        </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-head-line">Dash Board
+
+            </h1>
+
+            <div class="searchBar">
+                <form action="search.php" method="post">
+                    <input type="text" name="key"><br>
+                    <input class="searchBtn" type="submit" value="SEARCH">
+                    </br>
+                </form>
+            </div>
+
+
+
+            <br>
+            <br>
+
+
+            <div class="col">
+                <div>
+                    <div class="main-box mb-red">
+                        <a href="/HIB/client.php">
+                            <h5>
+                                <?php
+                                $sql = "SELECT count(*) AS c FROM client";
+                                $result = $conn->query($sql);
+
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "Total clients: ";
+                                    echo $row["c"];
+                                }
+                                ?>
+                            </h5>
+                        </a>
                     </div>
                 </div>
+                <div>
+                    <div class="main-box mb-dull">
+                        <a href="/HIB/payment.php">
+                            <h5>
+                                <?php
+                                $sql = "SELECT count(*) AS c FROM payment";
+                                $result = $conn->query($sql);
+
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "Payment Records: ";
+                                    echo $row["c"];
+                                }
+                                ?>
+
+                            </h5>
+                        </a>
+                    </div>
                 </div>
+                <div>
+                    <div class="main-box mb-pink">
+                        <a href="/HIB/agent.php">
+                            <h5>
+                                <?php
+                                $sql = "SELECT count(*) AS c FROM agent";
+                                $result = $conn->query($sql);
+
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "Total agents: ";
+                                    echo $row["c"];
+                                }
+                                ?>
+                            </h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 </body>
+
 </html>

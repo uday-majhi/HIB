@@ -94,14 +94,14 @@ tr:nth-child(even) {
 	
 	//                       checking if agent is authorized to edit or not  
 	$temp_id="";
-	$master_id="jyotirana";
+	$master_id="jyotirana@email.com";
 	$sql = "SELECT agent_id from client where client_id='$client_id'";
 	$result = $conn->query($sql);
 	while($row = $result->fetch_assoc()) {
 		$temp_id= $row['agent_id'];
 	}
 	
-	if($_SESSION["username"]==($temp_id || $master_id)){
+	if($_SESSION["email"]==($temp_id || $master_id)){
 
 
 	$sql = "SELECT * from client where client_id='$client_id'";

@@ -82,7 +82,7 @@ Month:         <input type="text" name="month" required><br>
 Amount:        <input type="text" name="amount" required><br>
 Due:           <input type="text" name="due" required><br>
 Fine:          <input type="text" name="fine" required><br>
-Agent Id:      <input type="text" name="agent_id" value="<?php echo $_SESSION["username"]; ?>" required><br>
+Agent Id:      <input type="text" name="agent_id" value="<?php echo $_SESSION["email"]; ?>" required><br>
 
 <input type="submit">
 </form>

@@ -5,7 +5,7 @@
 	session_start();
 	include'connection.php';
 	
-	$username = $_SESSION["username"];
+	$username = $_SESSION["email"];
 ?>
 <style>
 input[type=text], select {
@@ -91,7 +91,7 @@ tr:nth-child(even) {
                                 
 								  <?php
 									
-										echo "welcome, ".$_SESSION["username"];
+										echo "welcome, ".$_SESSION["email"];
 									
 								?>
 								
@@ -125,7 +125,7 @@ tr:nth-child(even) {
 
 	
 		
-		$client_id = $_SESSION["username"];
+		$client_id = $_SESSION["email"];
 	
 	            //   PRINTS CLIENT's info
 	$sql = "SELECT * from client where client_id='$client_id'";

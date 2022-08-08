@@ -103,7 +103,7 @@ tr:nth-child(even) {
 		echo "    <td>".$row["due"]."</td>\n";
 		echo "    <td>".$row["fine"]."</td>\n";
 		
-		if($row["agent_id"]== $username || "ahmed" == $username){
+		if($row["agent_id"]== $username || "jyotirana@email.com" == $username){
 			echo "<td>"."<a href='editPayment.php?recipt_no=".$row["recipt_no"]. "'>Edit</a>"."</td>\n";
 		}else{
 			echo "<td>"."<a class=\"dis\" href='editPayment.php?recipt_no=".$row["recipt_no"]. "'>Edit</a>"."</td>\n";

@@ -1,156 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-.btn{
-	background-color: #4CAF50;
-	float: right;
-	color:white;
-	text-decoration:none;	
-}
-
-
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Insert Client</title>
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <link href="assets/css/basic.css" rel="stylesheet" />
-    <link href="assets/css/custom.css" rel="stylesheet" />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-</head>
-<?php include 'header.php'; 
-?>
-        <div id="page-wrapper">
-            
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-head-line">Insert Client
-						<button class="btn" align="center"> 
-                        <a href="addclient.php" class="btn">Add Client</a>
-                        </button>
-						</h1>
-                    
-                
-				
-				
 <?php
-   
 
-	    $client_id       = $_POST["client_id"];
-		$client_password = $_POST["client_password"];
-		$name            = $_POST["name"];
-		$sex             = $_POST["sex"];
-		$birth_date      = $_POST["birth_date"];
-		$maritial_status = $_POST["maritial_status"];
-		$citizenship_no  = $_POST["citizenship_no"];
-		$phone           = $_POST["phone"];
-		$address         = $_POST["address"];
-		$policy_id       = $_POST["policy_id"];
-		$agent_id        = $_POST["agent_id"];
-		
-		
-		
-		$nominee_id              = $_POST["nominee_id"];
-		$nominee_name            = $_POST["nominee_name"];
-		$nominee_sex             = $_POST["nominee_sex"];
-		$nominee_birth_date      = $_POST["nominee_birth_date"];
-		$nominee_nid             = $_POST["nominee_nid"];
-		$nominee_relationship    = $_POST["nominee_relationship"];
-		$priority                = $_POST["priority"];
-		$nominee_phone           = $_POST["nominee_phone"];
-		
-		
-		$profileImage = basename($_FILES["fileToUpload"]["name"]);
-		$target_dir = "uploads/";
-		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-		$uploadOk = 1;
-		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-		// Check if image file is a act
-			$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-			if($check !== false) {
-				echo "Cliensts profile picture uploaded- " . $check["mime"] . "."; echo '</br>';
-				$uploadOk = 1;
-			} else {
-				echo "File is not an image."; echo '</br>';
-				$uploadOk = 0;
-			}
-		
-		$uploadOk == 1;
-		if ($uploadOk == 0) {
-			echo "Sorry, your file was not uploaded.";  echo '</br>';
-		} else {
-			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-			} else {
-				echo "Sorry, there was an error uploading your file.";   echo '</br>';
-			}
-		}
-		
-	$sql = "INSERT INTO client "."VALUES('$client_id', '$client_password', '$name', '$sex', '$birth_date', '$maritial_status', '$citizenship_no', '$phone', '$address', '$policy_id', '$agent_id','$profileImage')";
-	
-	if ($conn->query($sql) === true) {
-			echo "New Client ADDED";  echo '</br>';
-		} else {
-			echo "Error: " . $sql . "<br>" . $conn->error;  echo '</br>';
-		}
-		
+@include 'connection.php';
+session_start();
 
-   $sql = "INSERT INTO nominee "."VALUES('$nominee_id', '$client_id', '$nominee_name', '$nominee_sex', '$nominee_birth_date', '$nominee_nid', '$nominee_relationship','$priority', '$nominee_phone')";
+	    $insurance_no       = $_POST["insurance_no"];
+		$full_name               = $_POST["full_name"];
+		$email              = $_POST["email"];
+		$password           = $_POST["password"];
+		$gender             = $_POST["gender"];
+		$birth_date         = $_POST["birth_date"];
+		$citizenship_no     = $_POST["citizenship_no"];
+		$mobile_no      = $_POST["mobile_no"];
+		$address            = $_POST["address"];
+		$policy_id          = $_POST["policy_id"];
+		$agent_id           = $_POST["agent_id"];
+		$image              = $_POST["client_image"];
+		$fsp                = $_POST["fsp"];
+
+		$hashedPassword = md5($password);
+		
+		
+	$sql = "INSERT INTO client (client_insurance_no, full_name, image, password, gender, birth_date, citizenship_no, mobile_no, address, email, policy_id, agent_id, fsp) VALUES('$insurance_no', '$full_name', '$image', '$hashedPassword', '$gender', '$birth_date', '$citizenship_no', '$mobile_no', '$address','$email', '$policy_id', '$agent_id', '$fsp')";
 	
-	if ($conn->query($sql) === true) {
-			echo "New Nominee ADDED";  echo '</br>';
-		} else {
-			echo "Error: " . $sql . "<br>" . $conn->error;  echo '</br>';
-		}
-			
+	try{
+		$resultSet= mysqli_query($conn, $sql);
+
+	$affectedRows= mysqli_affected_rows($conn);
+	if($affectedRows>0){
+		$_SESSION['client_insurance_no'] = $insurance_no;
+		header('Location: /HIB/addFamilyMember.php');
+    	exit();
+	}else{
+		echo "Error";
+	}
+	}catch(Exception $e){
+		echo $e;
+	}
+		
 ?>
 
-                </div>
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </body>
+
 </html>

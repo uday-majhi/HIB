@@ -1,61 +1,65 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
-<style>
-.button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-	margin-left:2%;
-	display:block;
-	float: center;
-}
-.btn{
-	background-color: #4CAF50;
-	float: right;
-	color:white;
-	text-decoration:none;	
-}
+    <style>
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        margin-left: 2%;
+        display: block;
+        float: center;
+    }
 
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-	margin-left:0%;
-	font-size:110%;
-}
+    .btn {
+        background-color: #4CAF50;
+        float: right;
+        color: white;
+        text-decoration: none;
+    }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-left: 0%;
+        font-size: 110%;
+    }
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-.dis {
-	pointer-events: none;
-	cursor: default;
-	color:#595959;
-}
-</style>
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .dis {
+        pointer-events: none;
+        cursor: default;
+        color: #595959;
+    }
+    </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agents</title>
 
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-       <!--CUSTOM BASIC STYLES-->
-	   
+    <!--CUSTOM BASIC STYLES-->
+
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/basic.css" rel="stylesheet" />
     <!--CUSTOM MAIN STYLES-->
@@ -63,28 +67,29 @@ tr:nth-child(even) {
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
+
 <body>
-<?php include 'header.php'; 
+    <?php include 'header.php'; 
 ?>
-        <!-- /. NAV SIDE  -->
-        <div id="page-wrapper">
-            
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-head-line">Agents Information  
-			<?php    
-			if ($_SESSION["username"]=="ahmed") {
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Agents Information
+                    <?php    
+			if ($_SESSION["email"]=="jyotirana@email.com") {
 			echo '<button class="btn" align="center">';
             echo '<a href="addAgent.php" class="btn">Add Agent</a>';
             echo '</button>';
 			}
-			?>		
-						</h1>
-                    </div>
-                </div>
-                
-                <!-- /. ROW  -->
-<?php
+			?>
+                </h1>
+            </div>
+        </div>
+
+        <!-- /. ROW  -->
+        <?php
 
 include'connection.php';
 	
@@ -97,7 +102,7 @@ include'connection.php';
     echo "    <th>NAME</th>\n";
     echo "    <th>BRANCH</th>\n";
     echo "    <th>PHONE</th>\n";
-	if ($_SESSION["username"]=="ahmed") {
+	if ($_SESSION["email"]=="jyotirana@email.com") {
     echo "    <th>PASSWORD</th>\n";
 	echo "    <th>UPDATE</th>\n";
 	}
@@ -112,7 +117,7 @@ include'connection.php';
 		echo "    <td>".$row["name"]."</td>\n";
 		echo "    <td>".$row["branch"]."</td>\n";
 		echo "    <td>".$row["phone"]."</td>\n";
-		if ($_SESSION["username"]=="ahmed") {
+		if ($_SESSION["email"]=="jyotirana@email.com") {
 		echo "    <td>".$row["agent_password"]."</td>\n";
 		echo "    <td>"."<a href='editAgent.php?agent_id=".$row["agent_id"]. "'>Edit</a>"."</td>\n";
 		}
@@ -124,18 +129,19 @@ include'connection.php';
 $conn->close();
 ?>
 
-            
-        </div>
-        <!-- /. PAGE WRAPPER  -->
+
+    </div>
+    <!-- /. PAGE WRAPPER  -->
 
 
     </div>
     <!-- /. WRAPPER  -->
 
-   
-    
 
 
-	
+
+
+
 </body>
+
 </html>
