@@ -3,7 +3,7 @@
 @include 'connection.php';
 session_start();
 
-	    $insurance_no       = $_POST["insurance_no"];
+	    $client_insurance_no       = $_POST["client_insurance_no"];
 		$full_name               = $_POST["full_name"];
 		$email              = $_POST["email"];
 		$password           = $_POST["password"];
@@ -13,14 +13,14 @@ session_start();
 		$mobile_no      = $_POST["mobile_no"];
 		$address            = $_POST["address"];
 		$policy_id          = $_POST["policy_id"];
-		$agent_id           = $_POST["agent_id"];
+		$agent_email           = $_POST["agent_email"];
 		$image              = $_POST["client_image"];
 		$fsp                = $_POST["fsp"];
 
 		$hashedPassword = md5($password);
 		
 		
-	$sql = "INSERT INTO client (client_insurance_no, full_name, image, password, gender, birth_date, citizenship_no, mobile_no, address, email, policy_id, agent_id, fsp) VALUES('$insurance_no', '$full_name', '$image', '$hashedPassword', '$gender', '$birth_date', '$citizenship_no', '$mobile_no', '$address','$email', '$policy_id', '$agent_id', '$fsp')";
+	$sql = "INSERT INTO client (client_insurance_no, full_name, image, password, gender, birth_date, citizenship_no, mobile_no, address, email, policy_id, agent_email, fsp) VALUES('$client_insurance_no', '$full_name', '$image', '$hashedPassword', '$gender', '$birth_date', '$citizenship_no', '$mobile_no', '$address','$email', '$policy_id', '$agent_email', '$fsp')";
 	
 	try{
 		$resultSet= mysqli_query($conn, $sql);
@@ -38,13 +38,3 @@ session_start();
 	}
 		
 ?>
-
-</div>
-
-</div>
-
-</div>
-
-</body>
-
-</html>

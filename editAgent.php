@@ -93,33 +93,33 @@ include'connection.php';
 	$id = "";
 	if($_SERVER["REQUEST_METHOD"] == "GET"){
 		
-		$agent_id = $_GET["agent_id"];
+		$agent_email = $_GET["agent_email"];
 		
 		
 	}
-	$sql = "SELECT agent_id, agent_password, name, branch, phone from agent where agent_id='$agent_id'";
+	$sql = "SELECT agent_email, agent_password, name, branch, phone from agent where agent_email='$agent_email'";
 	$result = $conn->query($sql);
 	
 	echo "<div>\n";
 	
 	  echo '<form action="updateAgent.php" method="post">';
 	    echo "<label for=\"fname\">AGENT ID</label>";
-	    echo "<input type=\"text\" value=\"$agent_id\"name=\"agent_id\"/>"."</br>";
+	    echo "<input type=\"text\" value=\"$agent_email\"name=\"agent_email\"/>"."</br>";
 	while($row = $result->fetch_assoc()) {
 		echo "<label for=\"fname\">PASSWORD</label>";
-	    echo "<input type=\"text\" agent_id=\"fname\" name=\"agent_password\" placeholder=\"password..\" value=\"$row[agent_password]\">";
+	    echo "<input type=\"text\" agent_email=\"fname\" name=\"agent_password\" placeholder=\"password..\" value=\"$row[agent_password]\">";
 		echo "<label for=\"fname\">NAME</label>";
-	    echo "<input type=\"text\" agent_id=\"fname\" name=\"name\" placeholder=\"Your Name..\" value=\"$row[name]\">";
+	    echo "<input type=\"text\" agent_email=\"fname\" name=\"name\" placeholder=\"Your Name..\" value=\"$row[name]\">";
 		echo "<label for=\"fname\">BRANCH</label>";
-		echo "<input type=\"text\" agent_id=\"fname\" name=\"branch\" placeholder=\"Your Branch..\" value=\"$row[branch]\">";
+		echo "<input type=\"text\" agent_email=\"fname\" name=\"branch\" placeholder=\"Your Branch..\" value=\"$row[branch]\">";
 		echo "<label for=\"fname\">PHONE</label>";
-		echo "<input type=\"text\" agent_id=\"fname\" name=\"phone\" placeholder=\"Your Phone..\" value=\"$row[phone]\">";
+		echo "<input type=\"text\" agent_email=\"fname\" name=\"phone\" placeholder=\"Your Phone..\" value=\"$row[phone]\">";
 		
     }
 	
 	echo "<input type=\"submit\" value=\"UPDATE\">";
 	echo "</form>\n";
-	echo "<a href='deleteAgent.php?agent_id=".$agent_id."'>Delete Agent</a>";
+	echo "<a href='deleteAgent.php?agent_email=".$agent_email."'>Delete Agent</a>";
 echo "</div>\n";
 echo "\n";
 

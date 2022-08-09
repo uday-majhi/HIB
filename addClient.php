@@ -71,7 +71,7 @@
             <h1 class="page-head-line">Add Client</h1>
 
             <form action="insertClient.php" method="post" enctype="multipart/form-data">
-                Insurance no.: <input type="number" name="insurance_no" required><br>
+                Insurance no.: <input type="number" name="client_insurance_no" required><br>
                 Full Name: <input type="text" name="full_name" required><br>
                 Email: <input type="email" name="email" required><br>
                 Password: <input type="text" name="password" required><br>
@@ -85,7 +85,7 @@
                 Mobile no.: <input type="number" name="mobile_no" required><br>
                 Address: <input type="text" name="address" required><br>
                 Policy ID: <input type="text" name="policy_id" required><br>
-                Agent ID: <input type="text" name="agent_id" value="<?php echo $_SESSION["email"]; ?>" required><br>
+                Agent ID: <input type="text" name="agent_email" value="<?php echo $_SESSION["email"]; ?>" required><br>
                 Image <input class="img" type="file" name="client_image" required> </br>
                 First Service Point:
                 <select name="fsp" id="Fsp">

@@ -88,11 +88,11 @@ include'connection.php';
 		$amount         = $_POST["amount"];
 		$fine           = $_POST["fine"];
 		$due            = $_POST["due"];
-		$agent_id       = $_POST["agent_id"];
+		$agent_email       = $_POST["agent_email"];
 		
 		
 
-	$sql = "INSERT INTO payment "."VALUES('$recipt_no', '$client_id', '$month', '$amount', '$fine', '$due','$agent_id')";
+	$sql = "INSERT INTO payment "."VALUES('$recipt_no', '$client_id', '$month', '$amount', '$fine', '$due','$agent_email')";
 	
 	if ($conn->query($sql) === true) {
 			echo "New Payment ADDED";

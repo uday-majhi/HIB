@@ -97,7 +97,7 @@ include'connection.php';
 	}
 		
 	
-	$sql = "SELECT recipt_no, client_id, month, amount, due, fine, agent_id from payment where recipt_no='$recipt_no'";
+	$sql = "SELECT recipt_no, client_id, month, amount, due, fine, agent_email from payment where recipt_no='$recipt_no'";
 	$result = $conn->query($sql);
 	
 	echo "<div>\n";
@@ -118,7 +118,7 @@ include'connection.php';
 		echo "<label for=\"fname\">FINE</label>";
 		echo "<input type=\"text\" recipt_no=\"fname\" name=\"fine\" placeholder=\"Fine..\" value=\"$row[fine]\">";
 		echo "<label for=\"fname\">AGENT ID</label>";
-		echo "<input type=\"text\" recipt_no=\"fname\" name=\"agent_id\" placeholder=\"Agent Id..\" value=\"$row[agent_id]\">";
+		echo "<input type=\"text\" recipt_no=\"fname\" name=\"agent_email\" placeholder=\"Agent Id..\" value=\"$row[agent_email]\">";
 		
     }
 	

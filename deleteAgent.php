@@ -85,10 +85,10 @@ tr:nth-child(even) {
 
 include'connection.php';
 
-$agent_id  = $_GET["agent_id"];
+$agent_email  = $_GET["agent_email"];
 
 // sql to delete a record
-$sql = "DELETE FROM agent WHERE agent_id='$agent_id'";
+$sql = "DELETE FROM agent WHERE agent_email='$agent_email'";
 
 if ($conn->query($sql) === TRUE) {
     echo "Record deleted successfully";

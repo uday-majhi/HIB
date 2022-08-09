@@ -77,7 +77,7 @@ tr:nth-child(even) {
 <?php
 
 	
-	$sql = "SELECT recipt_no,client_id,month,amount,due,fine, agent_id FROM payment";
+	$sql = "SELECT recipt_no,client_id,month,amount,due,fine, agent_email FROM payment";
 	$result = $conn->query($sql);
 	
 	echo "<table class=\"table\">\n";
@@ -103,7 +103,7 @@ tr:nth-child(even) {
 		echo "    <td>".$row["due"]."</td>\n";
 		echo "    <td>".$row["fine"]."</td>\n";
 		
-		if($row["agent_id"]== $username || "jyotirana@email.com" == $username){
+		if($row["agent_email"]== $username || "jyotirana@email.com" == $username){
 			echo "<td>"."<a href='editPayment.php?recipt_no=".$row["recipt_no"]. "'>Edit</a>"."</td>\n";
 		}else{
 			echo "<td>"."<a class=\"dis\" href='editPayment.php?recipt_no=".$row["recipt_no"]. "'>Edit</a>"."</td>\n";

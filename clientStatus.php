@@ -76,7 +76,7 @@ $username = $_SESSION["email"];
 	$sql = "SELECT * from client where client_id='$client_id'";
 	$result = $conn->query($sql);
 	$policy_id = "";
-	$agent_id="";
+	$agent_email="";
 	   
 ?>		
 <?php
@@ -107,8 +107,8 @@ $username = $_SESSION["email"];
 		echo "<input disabled type=\"text\" client_id=\"fname\" name=\"policy_id\" placeholder=\"policy id..\" value=\"$row[policy_id]\">";
 		$policy_id = $row["policy_id"];
 		$c_id      = $row["client_id"];
-		$a_id  = $row["agent_id"];
-		$agent_id = $row["agent_id"];
+		$a_id  = $row["agent_email"];
+		$agent_email = $row["agent_email"];
 		echo "<a href='editClient.php?client_id=".$c_id."'>Edit Client</a>\n";
     }
 		echo "<br>\n";
@@ -156,7 +156,7 @@ echo '</div>';
 	echo "<br>\n";
 	echo "<br>\n";
 	echo '<b>Policy Information</b>';	            //   PRINTS AGEENTS INFO
-	$sql = "SELECT * FROM agent where agent_id='$a_id'";
+	$sql = "SELECT * FROM agent where agent_email='$a_id'";
 	$result = $conn->query($sql);
 	
 	echo "<table class=\"table\">\n";
@@ -171,7 +171,7 @@ echo '</div>';
 	while($row = $result->fetch_assoc()) {
 		
 		echo "<tr>\n";
-		echo "    <td>".$row["agent_id"]."</td>\n";
+		echo "    <td>".$row["agent_email"]."</td>\n";
 		echo "    <td>".$row["name"]."</td>\n";
 		echo "    <td>".$row["branch"]."</td>\n";
 		echo "    <td>".$row["phone"]."</td>\n";
@@ -212,7 +212,7 @@ echo '</div>';
 		$nominee_id = $row["nominee_id"];
 
 		
-		if($agent_id == $username || "jyotirana@email.com" == $username){
+		if($agent_email == $username || "jyotirana@email.com" == $username){
 			echo "<td>"."<a href='editNominee.php?nominee_id=".$row["nominee_id"]. "'>Edit</a>"."</td>\n";
 		}else {
 			echo "<td>"."<a class=\"dis\" href='editNominee.php?nominee_id=".$row["nominee_id"]. "'>Edit</a>"."</td>\n";
@@ -227,7 +227,7 @@ echo '</div>';
 	echo "</br>\n";
 	echo '<b>Nominee</b>'; echo '&nbsp';echo '&nbsp';echo '&nbsp';
 
-	if($agent_id== $username || "jyotirana@email.com" == $username){
+	if($agent_email== $username || "jyotirana@email.com" == $username){
 			echo "<a href='addNominee.php?client_id=".$c_id. "'>Add Nominee</a>";
 		}else {
 			echo "<a class=\"dis\" href='addNominee.php?client_id=".$c_id. "'>Add nominee</a>";
@@ -263,7 +263,7 @@ echo '</div>';
 		echo "    <td>".$row["due"]."</td>\n";
 		echo "    <td>".$row["fine"]."</td>\n";
 		
-		if($row["agent_id"]== $username || "jyotirana@email.com" == $username){
+		if($row["agent_email"]== $username || "jyotirana@email.com" == $username){
 			echo "<td>"."<a href='editPayment.php?recipt_no=".$row["recipt_no"]. "'>Edit</a>"."</td>\n";
 		}else {
 			echo "<td>"."<a class=\"dis\" href='editPayment.php?recipt_no=".$row["recipt_no"]. "'>Edit</a>"."</td>\n";
@@ -275,7 +275,7 @@ echo '</div>';
 	
 	echo "</table>\n";
 
-	if($agent_id== $username || "jyotirana@email.com" == $username){
+	if($agent_email== $username || "jyotirana@email.com" == $username){
 			echo "<td>"."<a href='deleteClient.php?client_id=".$client_id. "'>Delete Client</a>"."</td>\n";
 		}else {
 			echo "<td>"."<a class=\"dis\" href='deleteClient.php?client_id=".$row["client_id"]. "'>Delete Client</a>"."</td>\n";

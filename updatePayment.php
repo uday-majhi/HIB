@@ -88,10 +88,10 @@ include'connection.php';
 		$amount          = $_POST["amount"];
 		$due             = $_POST["due"];
 		$fine            = $_POST["fine"];
-		$agent_id        = $_POST["agent_id"];
+		$agent_email        = $_POST["agent_email"];
 		
 	}
-	$sql = "UPDATE payment set recipt_no='$recipt_no' ,client_id='$client_id' ,month='$month',amount='$amount',due='$due',fine='$fine', agent_id='$agent_id' where recipt_no='$recipt_no'";
+	$sql = "UPDATE payment set recipt_no='$recipt_no' ,client_id='$client_id' ,month='$month',amount='$amount',due='$due',fine='$fine', agent_email='$agent_email' where recipt_no='$recipt_no'";
 		
 		if ($conn->query($sql) === true) {
 			echo "New record updated successfully";

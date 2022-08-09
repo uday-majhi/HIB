@@ -20,7 +20,7 @@
 			echo "Agent Logged In!";
 			$_SESSION["email"] = $email;
 			$_SESSION["full_name"] = $full_name;
-			header("Location: clientHome.php");
+			header("Location: home.php");
 		}else{
 			echo "checking client...";
 			$client_login_result_set= mysqli_query($conn, $client_login_query);
@@ -30,7 +30,7 @@
 				echo "client loggedin!";
 				$_SESSION["email"] = $email;
 				$_SESSION["full_name"] = $full_name;
-				header("Location: clientHome.php");
+				header("Location: home.php");
 			}else{
 				echo "Not found!";
 			}

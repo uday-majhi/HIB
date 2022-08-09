@@ -3,7 +3,7 @@
 	include'connection.php';
 	$username = $_SESSION["email"];
 
-	// $sql = "SELECT agent_id FROM agent WHERE agent_id = '$username'";
+	// $sql = "SELECT agent_email FROM agent WHERE agent_email = '$username'";
 	// $result = $conn->query($sql);
 // 	if ($result->num_rows > 0) {
 //         header("Location: home.php");

@@ -96,7 +96,7 @@
         <!-- /. ROW  -->
         <?php
 
-	$sql = "SELECT client_insurance_no, full_name, gender, birth_date, citizenship_no, mobile_no, address, email, policy_id, agent_id, fsp FROM client";
+	$sql = "SELECT client_insurance_no, full_name, gender, birth_date, citizenship_no, mobile_no, address, email, policy_id, agent_email, fsp FROM client";
 	
     try{
         $result = $conn->query($sql);
@@ -131,14 +131,9 @@
 		echo "    <td>".$row["mobile_no"]."</td>\n";
 		echo "    <td>".$row["address"]."</td>\n";
 		echo "    <td>".$row["policy_id"]."</td>\n";
-		echo "    <td>".$row["agent_id"]."</td>\n";
+		echo "    <td>".$row["agent_email"]."</td>\n";
 		echo "    <td>".$row["fsp"]."</td>\n";
-		// echo "    <td>"."<a href='clientStatus.php?client_id=".$row["client_id"]. "'>Client Status</a>"."</td>\n";
-		// if($row["agent_id"]== $username || "jyotirana@email.com" == $username){
-		// 	echo "<td>"."<a href='editClient.php?client_id=".$row["client_id"]. "'>Edit</a>"."</td>\n";
-		// }else {
-			echo "<td>"."<a class=\"dis\" href='editClient.php?client_id=".$row["client_id"]. "'>Edit</a>"."</td>\n";
-		// }
+			echo "<td>"."<a href='editClient.php?client_insurance_no=".$row["client_insurance_no"]. "'>Edit</a>"."</td>\n";
 
 	}
 	}

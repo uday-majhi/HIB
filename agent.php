@@ -93,7 +93,7 @@
 
 include'connection.php';
 	
-	$sql = "SELECT agent_id,agent_password,name,branch,phone FROM agent";
+	$sql = "SELECT agent_email,agent_password,name,branch,phone FROM agent";
 	$result = $conn->query($sql);
 	
 	echo "<table class=\"table\">\n";
@@ -113,13 +113,13 @@ include'connection.php';
 	while($row = $result->fetch_assoc()) {
 		
 		echo "<tr>\n";
-		echo "    <td>".$row["agent_id"]."</td>\n";
+		echo "    <td>".$row["agent_email"]."</td>\n";
 		echo "    <td>".$row["name"]."</td>\n";
 		echo "    <td>".$row["branch"]."</td>\n";
 		echo "    <td>".$row["phone"]."</td>\n";
 		if ($_SESSION["email"]=="jyotirana@email.com") {
 		echo "    <td>".$row["agent_password"]."</td>\n";
-		echo "    <td>"."<a href='editAgent.php?agent_id=".$row["agent_id"]. "'>Edit</a>"."</td>\n";
+		echo "    <td>"."<a href='editAgent.php?agent_email=".$row["agent_email"]. "'>Edit</a>"."</td>\n";
 		}
 	}
 	

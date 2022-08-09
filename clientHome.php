@@ -157,7 +157,7 @@ tr:nth-child(even) {
 		echo "<input disabled type=\"text\" client_id=\"fname\" name=\"policy_id\" placeholder=\"policy id..\" value=\"$row[policy_id]\">";
 		$policy_id = $row["policy_id"];
 		$c_id      = $row["client_id"];
-		$agent_id  = $row["agent_id"];
+		$agent_email  = $row["agent_email"];
 		
     }
 		echo "<br>\n";
@@ -203,7 +203,7 @@ tr:nth-child(even) {
 	echo "<br>\n";
 	echo '<b>Policy Information</b>';
 		            //   PRINTS AGEENTS INFO
-	$sql = "SELECT agent_id, name ,branch, phone FROM agent where agent_id='$agent_id'";
+	$sql = "SELECT agent_email, name ,branch, phone FROM agent where agent_email='$agent_email'";
 	$result = $conn->query($sql);
 	
 	echo "<table class=\"table\">\n";
@@ -218,7 +218,7 @@ tr:nth-child(even) {
 	while($row = $result->fetch_assoc()) {
 		
 		echo "<tr>\n";
-		echo "    <td>".$row["agent_id"]."</td>\n";
+		echo "    <td>".$row["agent_email"]."</td>\n";
 		echo "    <td>".$row["name"]."</td>\n";
 		echo "    <td>".$row["branch"]."</td>\n";
 		echo "    <td>".$row["phone"]."</td>\n";

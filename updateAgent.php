@@ -80,11 +80,11 @@ tr:nth-child(even) {
 include'connection.php';
 
 
-	$agent_id = $agent_password = $name = $branch = $phone = "";
+	$agent_email = $agent_password = $name = $branch = $phone = "";
 	
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		
-		$agent_id        = $_POST["agent_id"];
+		$agent_email        = $_POST["agent_email"];
 		$agent_password  = $_POST["agent_password"];
 		$name            = $_POST["name"];
 		$branch          = $_POST["branch"];
@@ -92,7 +92,7 @@ include'connection.php';
 		
 	}
 	
-	$sql = "UPDATE agent set name='$name' ,agent_password='$agent_password' ,branch='$branch' ,phone='$phone' where agent_id='$agent_id'";
+	$sql = "UPDATE agent set name='$name' ,agent_password='$agent_password' ,branch='$branch' ,phone='$phone' where agent_email='$agent_email'";
 		
 		if ($conn->query($sql) === true) {
 			echo "Record updated successfully";
