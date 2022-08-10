@@ -124,7 +124,7 @@
 	while($row = $result->fetch_assoc()) {
 		
 		echo "<tr>\n";
-		echo "    <td>"."<a href=\"/HIB/nominee.php?client_insurance_no=\">".$row["client_insurance_no"]."</a>"."</td>\n";
+		echo "    <td>"."<a href='/HIB/nominee.php?client_insurance_no=".$row["client_insurance_no"]."'>".$row["client_insurance_no"]."</a>"."</td>\n";
 		echo "    <td>".$row["full_name"]."</td>\n";
 		echo "    <td>".$row["birth_date"]."</td>\n";
 		echo "    <td>".$row["gender"]."</td>\n";

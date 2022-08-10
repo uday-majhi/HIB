@@ -91,7 +91,9 @@
 
         include 'connection.php';
 
-        $sql = "SELECT * FROM nominee";
+        $client_insurance_no = $_GET["client_insurance_no"];
+
+        $sql = isset($client_insurance_no) ? "SELECT * FROM nominee WHERE client_insurance_no='$client_insurance_no';" : "SELECT * FROM nominee;";
         $result = $conn->query($sql);
 
         echo "<table class=\"table\">\n";
