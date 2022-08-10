@@ -11,6 +11,7 @@ $identity_no       = $_POST["family_member_identity_no"];
 $relationship      = $_POST["family_member_relationship"];
 $image = $_POST["family_member_image"];
 $fsp                  = $_POST["family_member_fsp"];
+$insertFamilyMember_and_pay = $_POST["insertFamilyMember_and_pay"];
 
 $client_insurance_no = $_SESSION['client_insurance_no'];
 
@@ -26,7 +27,8 @@ try {
     $affectedRows = mysqli_affected_rows($conn);
     if ($affectedRows > 0) {
         echo "Added a Family member!";
-        header('Location: /HIB/addFamilyMember.php');
+        $redirect_to = "insertFamilyMember_and_pay" ? '/HIB/addPayment.php' : '/HIB/addFamilyMember.php';
+        header('Location: '.$redirect_to);
         exit();
     } else {
         echo "Error";
