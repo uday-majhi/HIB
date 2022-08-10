@@ -24,7 +24,7 @@ body {
 }
 
 #side-nav{
-    width: 25%;
+    width: 10%;
 }
 
 #side-nav #main-menu:first-child div{
@@ -252,4 +252,8 @@ body {
     .navbar {
         border-radius: 0px;
     }
+}
+
+.flex{
+    display: flex;
 }

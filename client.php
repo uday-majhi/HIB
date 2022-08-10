@@ -107,7 +107,8 @@
 	echo "<table class=\"table\">\n";
     echo "  <tr>\n";
     echo "    <th>Insurance No.</th>\n";
-    echo "    <th>NAME</th>\n";
+    echo "    <th>Name</th>\n";
+    echo "    <th>Birth Date</th>\n";
     echo "    <th>Gender</th>\n";
     echo "    <th>Citizenship no.</th>\n";
     echo "    <th>Mobile No</th>\n";
@@ -125,11 +126,12 @@
 		echo "<tr>\n";
 		echo "    <td>"."<a href=\"/HIB/nominee.php?client_insurance_no=\">".$row["client_insurance_no"]."</a>"."</td>\n";
 		echo "    <td>".$row["full_name"]."</td>\n";
-		echo "    <td>".$row["gender"]."</td>\n";
 		echo "    <td>".$row["birth_date"]."</td>\n";
+		echo "    <td>".$row["gender"]."</td>\n";
 		echo "    <td>".$row["citizenship_no"]."</td>\n";
 		echo "    <td>".$row["mobile_no"]."</td>\n";
 		echo "    <td>".$row["address"]."</td>\n";
+		echo "    <td>".$row["email"]."</td>\n";
 		echo "    <td>".$row["policy_id"]."</td>\n";
 		echo "    <td>".$row["agent_email"]."</td>\n";
 		echo "    <td>".$row["fsp"]."</td>\n";

@@ -65,7 +65,7 @@
 
                     </li>
                     <li>
-                        <a href="nominee.php">Nominee</a>
+                        <a href="nominee.php">Family Members</a>
 
                     </li>
                     <li>

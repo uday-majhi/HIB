@@ -61,7 +61,11 @@
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
-<?php include 'header.php'; 
+<?php include 'header.php';
+session_start();
+
+$client_insurance_no = $_SESSION["client_insurance_no"];
+$insurance_no;
 ?>
 <!-- /. NAV SIDE  -->
 <div id="page-wrapper">
@@ -71,9 +75,25 @@
             <h1 class="page-head-line">Family Informations</h1>
 
             <form action="insertFamilyMember.php" method="post" enctype="multipart/form-data">
+                <?php
+                $insurance_no = $client_insurance_no;
+                if (!isset($insurance_no)) {
+                    $sql = "SELECT full_name, client_insurance_no FROM client";
+                    $result_set = mysqli_query($conn, $sql);
+                    $num_rows = mysqli_num_rows($result_set);
+
+                    if ($num_rows > 0) {
+                        echo "Client: <select name=\"client_insurance_no\">";
+                        while ($row = mysqli_fetch_assoc($result_set)) {
+                            echo "<option value=\"" . $row["client_insurance_no"] . "\">" . $row["full_name"] . "</option>";
+                        }
+                        echo "</select>";
+                    }
+                }
+                ?>
                 Insurance no.: <input type="number" name="family_member_insurance_no" required> <br>
                 Name: <input type="text" name="family_member_name" required><br>
-                Gender: <select name="gender" id="family_member_gender">
+                Gender: <select name="family_member_gender" id="gender">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="others">Others</option>
@@ -97,7 +117,11 @@
                     </optgroup>
                 </select>
 
-                <input type="submit" name="insertFamilyMember" value="Submit" />
+                <div class="mt-2">
+                    <button class="btn btn-success" type="submit" name="insertFamilyMember">Submit</button>
+                    <button class="btn btn-success" type="submit" name="insertFamilyMember_and_pay">Submit and Make
+                        Payment</button>
+                </div>
             </form>
 
         </div>

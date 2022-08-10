@@ -14,6 +14,10 @@ $fsp                  = $_POST["family_member_fsp"];
 
 $client_insurance_no = $_SESSION['client_insurance_no'];
 
+if(!isset($client_insurance_no)){
+    $client_insurance_no = $_POST["client_insurance_no"];
+}
+
 $sql = "INSERT INTO nominee (client_insurance_no, insurance_no, name, gender, birth_date, identity_no, relationship, image, fsp) VALUES('$client_insurance_no', '$insurance_no', '$name', '$gender', '$birth_date', '$identity_no', '$relationship',  '$image', '$fsp')";
 
 try {
