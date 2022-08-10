@@ -117,6 +117,7 @@
 	echo "    <th>Policy</th>\n";
 	echo "    <th>Agent</th>\n";
 	echo "    <th>FSP</th>\n";
+	echo "    <th>Action</th>\n";
     echo "  </tr>";
 	
 	if ($result->num_rows > 0) {
@@ -135,7 +136,10 @@
 		echo "    <td>".$row["policy_id"]."</td>\n";
 		echo "    <td>".$row["agent_email"]."</td>\n";
 		echo "    <td>".$row["fsp"]."</td>\n";
-			echo "<td>"."<a href='editClient.php?client_insurance_no=".$row["client_insurance_no"]. "'>Edit</a>"."</td>\n";
+		echo "<td>".
+                "<a href='editClient.php?client_insurance_no=".$row["client_insurance_no"]. "'>Edit</a>"."|".
+                "<a href='clientStatus.php?client_insurance_no=".$row["client_insurance_no"]. "'>Status</a>".
+             "</td>\n";
 
 	}
 	}
