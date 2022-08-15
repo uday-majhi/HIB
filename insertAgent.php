@@ -4,11 +4,11 @@
 include 'connection.php';
 
 
-	    $email       = $_POST["email"];
-		$password = $_POST["password"];
-		$full_name           = $_POST["full_name"];
-		$branch         = $_POST["branch"];
-		$mobile_no          = $_POST["mobile_no"];
+	    $email         = $_POST["email"];
+		$password      = $_POST["password"];
+		$full_name     = $_POST["full_name"];
+		$branch        = $_POST["branch"];
+		$mobile_no     = $_POST["mobile_no"];
 
         $hashed_password = md5($password);
 		
@@ -20,6 +20,7 @@ include 'connection.php';
         $affectedRows= mysqli_affected_rows($conn);
         if($affectedRows>0){
             echo "Agent created!";
+            header("location:agent.php");
             exit();
         }else{
             echo "Error";

@@ -18,24 +18,39 @@
     <div id="wrapper">
         <nav id="top-nav" class="navbar navbar-default navbar-cls-top" role="navigation" style="margin-bottom:2">
 
-            <div id="logo" class="navbar-header">
 
-                <a class="navbar-brand" href="index.php">Health Insurance Board</a>
+
+            <a class="navbar-brand" href="index.php">Health Insurance Board</a>
+
+
+            <div class="btn btn-success">
+                <?php
+									if(!isset($_SESSION["email"])){
+										header("Location: index.php");
+									}else {
+										echo "welcome, ".$_SESSION["email"];
+									}
+								?>
             </div>
 
-            <div class="header-right">
+            <a href="client.php" class="btn btn-primary">Clients</a>
+            <a href="agent.php" class="btn btn-primary">Agents</a>
+            <a href=" policy.php" class="btn btn-primary">Policy</a>
+            <a href=" payment.php" class="btn btn-primary">Payments</a>
+
+
+            <div class=" header-right">
 
                 <a href="<?php echo "logout.php" ?>" class="btn btn-danger" title="Logout">Logout</a>
 
             </div>
+
         </nav>
-        <!-- /. NAV TOP  -->
-        <nav id="side-nav" class="navbar-default navbar-side" role="navigation">
+        <!-- <nav id="side-nav" class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
                         <div class="user-img-div">
-                            <img src="assets/img/user.png" class="img-thumbnail" />
 
                             <div class="inner-text">
                                 <?php
@@ -70,13 +85,11 @@
                     </li>
                     <li>
                         <a href="payment.php">Payments</a>
-
                     </li>
-
 
                 </ul>
 
             </div>
 
 
-        </nav>
+        </nav> -->

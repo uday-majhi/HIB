@@ -71,9 +71,9 @@
             <form action="insertAgent.php" method="post">
                 Full Name: <input type="text" name="full_name" required><br>
                 Email: <input type="email" name="email" required><br>
-                Password: <input type="text" name="password" required><br>
+                Password: <input type="password" name="password" required><br>
                 Branch: <input type="text" name="branch" required><br>
-                Mobile Number: <input type="text" name="mobile_number" required><br>
+                Mobile Number: <input type="text" name="mobile_no" required><br>
 
                 <input type="submit">
             </form>

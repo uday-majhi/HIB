@@ -79,22 +79,22 @@
 
 include'connection.php';
 	
-	$nominee_id = $client_id = $name = $sex = $birth_date = $marital_status = $identity_no = $phone = $address = $other =$priority ="";
+	$client_insurance_no = $insurance_no = $name = $gender = $birth_date =  $identity_no = $relationship = $fsp = $image ="";
 	
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		
-		$nominee_id      = $_POST["nominee_id"];
-		$client_id       = $_POST["client_id"];
-		$name            = $_POST["name"];
-		$sex             = $_POST["sex"];
-		$birth_date      = $_POST["birth_date"];
-		$identity_no     = $_POST["identity_no"];
-		$relationship    = $_POST["relationship"];
-		$priority        = $_POST["priority"];
-		$phone           = $_POST["phone"];
+		$client_insurance_no      = $_POST["client_insurance_no"];
+		$insurance_no             = $_POST["insurance_no"];
+		$name                     = $_POST["name"];
+		$gender                   = $_POST["gender"];
+		$birth_date               = $_POST["birth_date"];
+		$identity_no              = $_POST["identity_no"];
+		$relationship             = $_POST["relationship"];
+		$fsp                      = $_POST["fsp"];
+		$image                    = $_POST["image"];
 
 	}
-	$sql = "UPDATE nominee set nominee_id='$nominee_id',client_id='$client_id', name='$name', sex='$sex', birth_date='$birth_date', identity_no='$identity_no', relationship='$relationship', priority='$priority', phone='$phone' where nominee_id='$nominee_id'";
+	$sql = "UPDATE nominee set client_insurance_no='$client_insurance_no',insurance_no='$insurance_no', name='$name', gender='$gender', birth_date='$birth_date', identity_no='$identity_no', relationship='$relationship', fsp='$fsp', image='$image' where nominee_id='$nominee_id'";
 		
 		if ($conn->query($sql) === true) {
 			echo "Record updated successfully";

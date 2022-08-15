@@ -76,7 +76,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Nominees Informations
+                <h1 class="page-head-line">Family Member Informations
                     <button class="btn" align="center">
                         <a href="addFamilyMember.php" class="btn">Add Family Member</a>
                     </button>

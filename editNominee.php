@@ -1,90 +1,89 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-input[type=text], select {
-    width: 100%;
-    padding: 10px 13px;
-    margin: 3px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+    <style>
+    input[type=text],
+    select {
+        width: 100%;
+        padding: 10px 13px;
+        margin: 3px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
 
-input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-input[type=submit]:hover {
-    background-color: #45a049;
-}
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
 
-.btn{
-	background-color: #4CAF50;
-	float: right;
-	color:white;
-	text-decoration:none;	
-}
+    .btn {
+        background-color: #4CAF50;
+        float: right;
+        color: white;
+        text-decoration: none;
+    }
 
 
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Nominee</title>
 
-    <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-       <!--CUSTOM BASIC STYLES-->
-	   
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/basic.css" rel="stylesheet" />
-    <!--CUSTOM MAIN STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
-    <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
+
 <body>
-<?php include 'header.php'; 
+    <?php include 'header.php'; 
 ?>
-        <!-- /. NAV SIDE  -->
-        <div id="page-wrapper">
-            
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-head-line">Nominee Information  
-						<button class="btn" align="center"> 
-						<a href="addNominee.php" class="btn">Add Nominee</a>
-						</button>
-						</h1>
-                    </div>
-                </div>
-                
-                <!-- /. ROW  -->
-				
-<?php 
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Nominee Information
+                    <button class="btn" align="center">
+                        <a href="addNominee.php" class="btn">Add Nominee</a>
+                    </button>
+                </h1>
+            </div>
+        </div>
+
+        <!-- /. ROW  -->
+
+        <?php 
 
    include'connection.php';
 	
@@ -94,7 +93,7 @@ tr:nth-child(even) {
 		$nominee_id = $_GET["nominee_id"];	
 	}
 	
-	$sql = "SELECT * from nominee where nominee_id='$nominee_id'";
+	$sql = "SELECT * from nominee where nominee='$nominee'";
 	$result = $conn->query($sql);
 	
 	echo "<div>\n";
@@ -137,16 +136,17 @@ echo "\n";
 	
 ?>
 
-            
-        </div>
-        <!-- /. PAGE WRAPPER  -->
+
+    </div>
+    <!-- /. PAGE WRAPPER  -->
 
 
     </div>
     <!-- /. WRAPPER  -->
 
-   
-   
-	
+
+
+
 </body>
+
 </html>

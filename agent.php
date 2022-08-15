@@ -17,12 +17,12 @@
         cursor: pointer;
         margin-left: 2%;
         display: block;
-        float: center;
+        float: right;
     }
 
     .btn {
         background-color: #4CAF50;
-        float: right;
+
         color: white;
         text-decoration: none;
     }
@@ -79,8 +79,8 @@
                 <h1 class="page-head-line">Agents Information
                     <?php    
 			if ($_SESSION["email"]=="jyotirana@email.com") {
-			echo '<button class="btn" align="center">';
-            echo '<a href="addAgent.php" class="btn">Add Agent</a>';
+			echo '<button class="btn btn-success" align="center">';
+            echo '<a href="addAgent.php" class="btn btn-success">Add Agent</a>';
             echo '</button>';
 			}
 			?>
@@ -93,19 +93,16 @@
 
 include'connection.php';
 	
-	$sql = "SELECT agent_email,agent_password,name,branch,phone FROM agent";
+	$sql = "SELECT email, full_name, branch, mobile_no FROM agent";
 	$result = $conn->query($sql);
 	
 	echo "<table class=\"table\">\n";
     echo "  <tr>\n";
-    echo "    <th>AGENT ID</th>\n";
-    echo "    <th>NAME</th>\n";
-    echo "    <th>BRANCH</th>\n";
-    echo "    <th>PHONE</th>\n";
-	if ($_SESSION["email"]=="jyotirana@email.com") {
-    echo "    <th>PASSWORD</th>\n";
-	echo "    <th>UPDATE</th>\n";
-	}
+    echo "    <th>Email</th>\n";
+    echo "    <th>Name</th>\n";
+    echo "    <th>Branch</th>\n";
+    echo "    <th>Mobile Number</th>\n";
+    echo "    <th>Action</th>\n";
     echo "  </tr>";
 	
 	if ($result->num_rows > 0) {
@@ -113,14 +110,12 @@ include'connection.php';
 	while($row = $result->fetch_assoc()) {
 		
 		echo "<tr>\n";
-		echo "    <td>".$row["agent_email"]."</td>\n";
-		echo "    <td>".$row["name"]."</td>\n";
+		echo "    <td>".$row["email"]."</td>\n";
+		echo "    <td>".$row["full_name"]."</td>\n";
 		echo "    <td>".$row["branch"]."</td>\n";
-		echo "    <td>".$row["phone"]."</td>\n";
-		if ($_SESSION["email"]=="jyotirana@email.com") {
-		echo "    <td>".$row["agent_password"]."</td>\n";
-		echo "    <td>"."<a href='editAgent.php?agent_email=".$row["agent_email"]. "'>Edit</a>"."</td>\n";
-		}
+		echo "    <td>".$row["mobile_no"]."</td>\n";
+        echo "<td>".
+                "<a href='editAgent.php?email=".$row["email"]. "'>Edit</a>"."</td>\n";
 	}
 	
 	echo "</table>\n";
@@ -131,16 +126,7 @@ $conn->close();
 
 
     </div>
-    <!-- /. PAGE WRAPPER  -->
-
-
     </div>
-    <!-- /. WRAPPER  -->
-
-
-
-
-
 
 </body>
 

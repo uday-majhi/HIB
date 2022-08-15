@@ -20,7 +20,7 @@
         float: center;
     }
 
-    .btn {
+    button {
         background-color: #4CAF50;
         float: right;
         color: white;
@@ -63,15 +63,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clients</title>
 
-    <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!--CUSTOM BASIC STYLES-->
-
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/basic.css" rel="stylesheet" />
-    <!--CUSTOM MAIN STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
-    <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 
@@ -79,13 +74,12 @@
     <?php include 'header.php'; 
     include 'connection.php';
 ?>
-    <!-- /. NAV SIDE  -->
     <div id="page-wrapper">
 
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-head-line">Client Informations
-                    <button class="btn" align="center">
+                    <button class="btn btn-success" align="center">
                         <a href="addClient.php" class="btn">Add Client</a>
                     </button>
                 </h1>
@@ -93,7 +87,6 @@
         </div>
 
 
-        <!-- /. ROW  -->
         <?php
 
 	$sql = "SELECT client_insurance_no, full_name, gender, birth_date, citizenship_no, mobile_no, address, email, policy_id, agent_email, fsp FROM client";
@@ -145,15 +138,7 @@
 	}
 ?>
 
-
-        <!-- /. PAGE WRAPPER  -->
-
-
     </div>
-    <!-- /. WRAPPER  -->
-
-
-
 
 </body>
 

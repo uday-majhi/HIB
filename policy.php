@@ -81,19 +81,15 @@
 
 include'connection.php';
 	
-	$sql = "SELECT policy_name, policy_id,term,health_status,system,payment_method,coverage, age_limit FROM policy";
+	$sql = "SELECT policy_name, policy_id,coverage, age_limit FROM policy";
 	$result = $conn->query($sql);
 	
     echo "<table class=\"table\">\n";
     echo "  <tr>\n";
-    echo "    <th>POLICY NAME</th>\n";
-    echo "    <th>POLICY ID</th>\n";
-    echo "    <th>TERM</th>\n";
-    echo "    <th>TOTAL AMOUNT</th>\n";
-    echo "    <th>PER MONTH</th>\n";
-	echo "    <th>PAYMENT METHOD</th>\n";
-    echo "    <th>COVERAGE</th>\n";
-    echo "    <th>AGE LIMIT</th>\n";
+    echo "    <th>Policy Name</th>\n";
+    echo "    <th>Policy Id</th>\n";
+    echo "    <th>Coverage</th>\n";
+    echo "    <th>Age Limit</th>\n";
     
     echo "  </tr>";
 	
@@ -104,10 +100,6 @@ include'connection.php';
 		echo "<tr>\n";
         echo "    <td>".$row["policy_name"]."</td>\n";
 		echo "    <td>".$row["policy_id"]."</td>\n";
-		echo "    <td>".$row["term"]."</td>\n";
-		echo "    <td>".$row["health_status"]."</td>\n";
-		echo "    <td>".$row["system"]."</td>\n";
-		echo "    <td>".$row["payment_method"]."</td>\n";
 		echo "    <td>".$row["coverage"]."</td>\n";
 		echo "    <td>".$row["age_limit"]."</td>\n";
 		
