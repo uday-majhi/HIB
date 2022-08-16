@@ -10,7 +10,7 @@
 
 	echo "runs...";	
 	$agent_login_query = "SELECT email, full_name from agent where email='$email' AND password='$hashed_password'";
-	$client_login_query = "SELECT email, full_name from client where email='$email' AND password='$hashed_password'";
+	$client_login_query = "SELECT email, full_name, client_insurance_no from client where email='$email' AND password='$hashed_password'";
 		
 	try{
 		$agent_login_result_set= mysqli_query($conn, $agent_login_query);
@@ -20,6 +20,8 @@
 			echo "Agent Logged In!";
 			$_SESSION["email"] = $email;
 			$_SESSION["full_name"] = $full_name;
+			$_SESSION["role"] = "agent";
+
 			header("Location: home.php");
 		}else{
 			echo "checking client...";
@@ -27,10 +29,14 @@
 			$client_num_rows= mysqli_num_rows($client_login_result_set);
 	
 			if($client_num_rows>0){
-				echo "client loggedin!";
+				$client_data = mysqli_fetch_assoc($client_login_result_set);
+
 				$_SESSION["email"] = $email;
 				$_SESSION["full_name"] = $full_name;
-				header("Location: home.php");
+				$_SESSION["role"] = "client";
+				
+				header("location: /HIB/clientStatus.php?client_insurance_no=$client_data[client_insurance_no]");
+           		exit();
 			}else{
 				echo "Not found!";
 			}

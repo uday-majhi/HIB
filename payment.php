@@ -1,3 +1,11 @@
+<?php
+    $role = $_SESSION["role"];
+    if($role !== "agent"){
+        header("location: /HIB/home.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 
 <html>
