@@ -30,7 +30,7 @@
         background-color: #45a049;
     }
 
-    .btn {
+    button {
         background-color: #4CAF50;
         float: right;
         color: white;
@@ -102,21 +102,20 @@ include'connection.php';
 	
 	while($row = $result->fetch_assoc()) {
 		echo "<label for=\"fname\">Receipt Number</label>";
-	    echo "<input type=\"text\" receipt_no=\"fname\" name=\"receipt_no\" placeholder=\"Your recpit no..\" value=\"$row[receipt_no]\">";
+	    echo "<input type=\"text\" receipt_no=\"fname\" name=\"receipt_no\" value=\"$row[receipt_no]\">";
 		echo "<label for=\"fname\">Client Insurance Number</label>";
-	    echo "<input type=\"text\" receipt_no=\"fname\" name=\"client_insurance_no\" placeholder=\"Client insurance number..\" value=\"$row[client_insurance_no]\">";
+	    echo "<input type=\"text\" receipt_no=\"fname\" name=\"client_insurance_no\" value=\"$row[client_insurance_no]\">";
 		echo "<label for=\"fname\">Amount</label>";
-		echo "<input type=\"text\" receipt_no=\"fname\" name=\"amount\" placeholder=\"Amount..\" value=\"$row[amount]\">";
+		echo "<input type=\"text\" receipt_no=\"fname\" name=\"amount\"  value=\"$row[amount]\">";
 		echo "<label for=\"fname\">Date</label>";
-		echo "<input type=\"text\" receipt_no=\"fname\" name=\"date\" placeholder=\"Fate..\" value=\"$row[date]\">";
-        echo "<label for=\"fname\">Agent_email</label>";
-		echo "<input type=\"text\" receipt_no=\"fname\" name=\"email\" placeholder=\"Agent Id..\" value=\"$row[agent_email]\">";
+		echo "<input type=\"text\" receipt_no=\"fname\" name=\"date\" value=\"$row[date]\">";
+        echo "<label for=\"fname\">Agent email</label>";
+		echo "<input type=\"text\" receipt_no=\"fname\" name=\"email\" value=\"$row[agent_email]\">";
 		
     }
 	
 	echo "<input type=\"submit\" value=\"UPDATE\">";
 	echo "</form>\n";
-	echo "<a href='deletePayment.php?receipt_no=".$receipt_no."'>Delete Payment</a>";
 	
 	
 	

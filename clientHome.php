@@ -195,7 +195,7 @@
 	
 	echo "<br>\n";
 	echo '<b>Policy Information</b>';
-		            //   PRINTS AGEENTS INFO
+
 	$sql = "SELECT agent_email, name ,branch, phone FROM agent where agent_email='$agent_email'";
 	$result = $conn->query($sql);
 	
@@ -222,7 +222,6 @@
 	echo "<br>\n";
 	echo "<br>\n";
 		echo '<b>Agent Information</b>';
-	             // prints nominee infos 
 	$sql = "SELECT * FROM nominee where client_id='$c_id'";
 	$result = $conn->query($sql);
 	
@@ -254,7 +253,6 @@
 	echo "<br>\n";
 	echo "<br>\n";
 	echo '<b>Nominees</b>';
-                       //prints payments 
 	$sql = "SELECT * FROM payment where client_id='$c_id'";
 	$result = $conn->query($sql);
 	

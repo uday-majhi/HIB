@@ -29,9 +29,9 @@
         float: right;
     }
 
-    .btn {
+    button {
         background-color: #4CAF50;
-
+        float: right;
         color: white;
         text-decoration: none;
     }
@@ -64,23 +64,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agents</title>
-
-    <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!--CUSTOM BASIC STYLES-->
-
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/basic.css" rel="stylesheet" />
-    <!--CUSTOM MAIN STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
-    <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 
 <body>
     <?php include 'header.php'; 
 ?>
-    <!-- /. NAV SIDE  -->
     <div id="page-wrapper">
 
         <div class="row">
@@ -97,7 +90,6 @@
             </div>
         </div>
 
-        <!-- /. ROW  -->
         <?php
 
 include'connection.php';
@@ -112,10 +104,10 @@ include'connection.php';
     echo "    <th>Branch</th>\n";
     echo "    <th>Mobile Number</th>\n";
     echo "    <th>Action</th>\n";
+    echo "     <th>Remove</th>\n";
     echo "  </tr>";
 	
 	if ($result->num_rows > 0) {
-    // output data of each row
 	while($row = $result->fetch_assoc()) {
 		
 		echo "<tr>\n";
@@ -123,8 +115,8 @@ include'connection.php';
 		echo "    <td>".$row["full_name"]."</td>\n";
 		echo "    <td>".$row["branch"]."</td>\n";
 		echo "    <td>".$row["mobile_no"]."</td>\n";
-        echo "<td>".
-                "<a href='editAgent.php?email=".$row["email"]. "'>Edit</a>"."</td>\n";
+        echo "<td>". "<a href='editAgent.php?email=".$row["email"]. "'>Edit</a>"."</td>\n";
+        echo "<td>". "<a href='deleteAgent.php?email=".$row["email"]. "'>Delete</a>"."</td>\n";
 	}
 	
 	echo "</table>\n";

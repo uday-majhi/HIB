@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -7,8 +6,8 @@
     input[type=text],
     select {
         width: 100%;
-        padding: 10px 13px;
-        margin: 3px 0;
+        padding: 12px 20px;
+        margin: 8px 0;
         display: inline-block;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -28,13 +27,6 @@
 
     input[type=submit]:hover {
         background-color: #45a049;
-    }
-
-    .btn {
-        background-color: #4CAF50;
-        float: right;
-        color: white;
-        text-decoration: none;
     }
 
 
@@ -57,69 +49,48 @@
     </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Agent</title>
+    <title>Add Client</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/basic.css" rel="stylesheet" />
     <link href="assets/css/custom.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
+<?php include 'header.php'; 
+$email = $_GET["email"];
 
-<body>
-    <?php 
-include 'header.php'; 
+if($email){
+    $sql = "SELECT * FROM agent WHERE email='$email'";
+    $resultSet = mysqli_query($conn, $sql);
+    $numRows = mysqli_num_rows($resultSet);
+
+    $details = $row = mysqli_fetch_assoc($resultSet);
+}
+
 ?>
-    <div id="page-wrapper">
+<div id="page-wrapper">
 
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="page-head-line">Agents Information
-                </h1>
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-head-line">Edit Agent</h1>
+            <form action="updateAgent.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="email" value="<?php echo $email ?>" />
+
+                Email: <input type="email" name="insurance_no" value="<?php echo $details["email"]; ?>" readonly><br>
+                Full Name: <input type="text" name="full_name" value="<?php echo $details["full_name"]; ?>"
+                    required><br>
+                Branch: <input type="text" name="branch" value="<?php echo $details["branch"]; ?>" required><br>
+                Mobile No <input class="mobile_no" type="number" name="mobile_no"
+                    value="<?php echo $details["mobile_no"]; ?>" required> </br>
+                <input type="submit" name="editAgent" value="Update Details" />
+
+            </form>
+
         </div>
 
-        <?php 
-
-include'connection.php';
-	
-	
-	$id = "";
-	if($_SERVER["REQUEST_METHOD"] == "GET"){
-		
-		$email = $_GET["email"];
-		
-		
-	}
-	$sql = "SELECT email,password, full_name, branch, mobile_no from agent where email='$email'";
-	$result = $conn->query($sql);
-	
-	echo "<div>\n";
-	
-	  echo '<form action="updateAgent.php" method="post">';
-	    echo "<label for=\"fname\">Agent Email</label>";
-	    echo "<input type=\"text\" value=\"$email\"name=\"email\"/>"."</br>";
-	while($row = $result->fetch_assoc()) {
-        
-		echo "<label for=\"fname\">Name</label>";
-	    echo "<input type=\"text\" email=\"fname\" name=\"full_name\" placeholder=\"Your Name..\" value=\"$row[full_name]\">";
-		echo "<label for=\"fname\">Branch</label>";
-		echo "<input type=\"text\" email=\"fname\" name=\"branch\" placeholder=\"Your Branch..\" value=\"$row[branch]\">";
-		echo "<label for=\"fname\">Phone</label>";
-		echo "<input type=\"text\" email=\"fname\" name=\"mobile_no\" placeholder=\"Your Phone..\" value=\"$row[mobile_no]\">";
-		
-    }
-	
-	echo "<input type=\"submit\" value=\"UPDATE\">";
-	echo "</form>\n";
-	echo "<a href='deleteAgent.php?agent_email=".$email."'>Delete Agent</a>";
-echo "</div>\n";
-echo "\n";
-
-?>
-
-
     </div>
-    </div>
+
+</div>
 
 </body>
 

@@ -50,15 +50,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Payment</title>
-    <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FONTAWESOME STYLES-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <!--CUSTOM BASIC STYLES-->
     <link href="assets/css/basic.css" rel="stylesheet" />
-    <!--CUSTOM MAIN STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
-    <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <?php include 'header.php'; 
@@ -68,7 +63,6 @@ $client_id       = $_GET["client_id"];
 }else{ $client_id="";
 }
 ?>
-<!-- /. NAV SIDE  -->
 <div id="page-wrapper">
 
     <div class="row">
@@ -107,11 +101,10 @@ $client_id       = $_GET["client_id"];
 
 
     </div>
-    <!-- /. PAGE WRAPPER  -->
 
 
 </div>
-<!-- /. WRAPPER  -->
+
 
 <script>
 const client_insurance_no_select = document.querySelector('[name=client_insurance_no]');

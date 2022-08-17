@@ -25,16 +25,16 @@
         margin: 4px 2px;
         cursor: pointer;
         margin-left: 2%;
-        display: block;
+
         float: center;
     }
 
-    /* .btn {
-        background-color: #4CAF50;
+    button {
+
         float: right;
         color: white;
         text-decoration: none;
-    } */
+    }
 
     table {
         font-family: arial, sans-serif;
@@ -79,7 +79,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-head-line">Payment Informations
-                    <button class="btn" align="right">
+                    <button class="btn btn-primary" align="right">
                         <a href="addPayment.php" class="btn btn-primary">Add Payment</a>
                     </button>
                 </h1>
@@ -101,6 +101,8 @@
     echo "    <th>Date</th>\n";
     echo "    <th>Amount</th>\n";
 	echo "    <th>Agent Email</th>\n";
+    echo "    <th>Action</th>\n";
+    echo "    <th>Remove Payment</th>\n";
     echo "  </tr>";
 	
 	if ($result->num_rows > 0) {
@@ -114,12 +116,14 @@
 		echo "    <td>".$row["amount"]."</td>\n";
 		echo "    <td>".$row["agent_email"]."</td>\n";
         		
-		if($row["agent_email"]== $username || "jyotirana@email.com" == $username){
+		if($row["email"]== $username || "jyotirana@email.com" == $username){
 			echo "<td>"."<a href='editPayment.php?receipt_no=".$row["receipt_no"]. "'>Edit</a>"."</td>\n";
 		}else{
 			echo "<td>"."<a class=\"dis\" href='editPayment.php?receipt_no=".$row["receipt_no"]. "'>Edit</a>"."</td>\n";
+          
 		}
-		
+        
+		echo "<td>"."<a href='deletePayment.php?receipt_no=".$row["receipt_no"]. "'>Delete</a>"."</td>\n";
 		
 	}
 	

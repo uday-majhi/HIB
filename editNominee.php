@@ -68,7 +68,6 @@
 <body>
     <?php include 'header.php'; 
 ?>
-    <!-- /. NAV SIDE  -->
     <div id="page-wrapper">
 
         <div class="row">
@@ -81,7 +80,6 @@
             </div>
         </div>
 
-        <!-- /. ROW  -->
 
         <?php 
 
@@ -138,14 +136,9 @@ echo "\n";
 
 
     </div>
-    <!-- /. PAGE WRAPPER  -->
 
 
     </div>
-    <!-- /. WRAPPER  -->
-
-
-
 
 </body>
 

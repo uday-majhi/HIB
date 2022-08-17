@@ -19,9 +19,7 @@ body {
     width: 100%;
 }
 
-#logo{
-    width: 25%;
-}
+
 
 #side-nav{
     width: 10%;
@@ -220,20 +218,6 @@ body {
 .nav > li > a > i {
     margin-right: 10px;
 
-#footer-sec {
-    background-color:#000;
-    padding:20px 50px;
-    color:#fff;
-    font-size:12px;
-}
-
-    #footer-sec a {
-        color:#fff;
-    }
-    #footer-sec a:hover,a:focus {
-        color:#fff;
-        text-decoration:none;
-    }
 
 @media (min-width:768px) {
     #page-wrapper {

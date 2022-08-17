@@ -20,7 +20,7 @@
         float: center;
     }
 
-    .btn {
+    .button {
         background-color: #4CAF50;
         float: right;
         color: white;
@@ -55,36 +55,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nominees</title>
-
-    <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!--CUSTOM BASIC STYLES-->
-
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/basic.css" rel="stylesheet" />
-    <!--CUSTOM MAIN STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
-    <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 
 <body>
     <?php include 'header.php';
     ?>
-    <!-- /. NAV SIDE  -->
     <div id="page-wrapper">
 
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-head-line">Family Member Informations
-                    <button class="btn" align="center">
-                        <a href="addFamilyMember.php" class="btn">Add Family Member</a>
-                    </button>
+                <h1 class="page-head-line">Family Members Information
                 </h1>
             </div>
         </div>
 
-        <!-- /. ROW  -->
 
         <?php
 
@@ -120,7 +109,8 @@
                 echo "    <td>" . $row["birth_date"] . "</td>\n";
                 echo "    <td>" . $row["relationship"] . "</td>\n";
                 echo "    <td>" . $row["fsp"] . "</td>\n";
-                echo "    <td>" . "<a href='clientStatus.php?client_insurance_no=" . $row["client_insurance_no"] . "'>Client Status</a>" . "</td>\n";
+                echo "    <td>" . "<a href='clientStatus.php?client_insurance_no=" . $row["client_insurance_no"] . "'>Client Status</a>" ."|".
+                "<a href='editNominee.php?client_insurance_no=".$row["client_insurance_no"]. "'>Edit</a>". "</td>\n";
             }
 
             echo "</table>\n";

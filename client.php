@@ -140,7 +140,8 @@
 		echo "    <td>".$row["fsp"]."</td>\n";
 		echo "<td>".
                 "<a href='editClient.php?client_insurance_no=".$row["client_insurance_no"]. "'>Edit</a>"."|".
-                "<a href='clientStatus.php?client_insurance_no=".$row["client_insurance_no"]. "'>Status</a>".
+                "<a href='clientStatus.php?client_insurance_no=".$row["client_insurance_no"]. "'>Status</a>"."|".
+                "<a href='deleteClient.php?client_insurance_no=".$row["client_insurance_no"]. "'>Delete</a>".
              "</td>\n";
 
 	}
