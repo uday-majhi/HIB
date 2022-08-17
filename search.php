@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $role = $_SESSION["role"];
     if($role !== "agent"){
         header("location: /HIB/home.php");

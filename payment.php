@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $role = $_SESSION["role"];
     if($role !== "agent"){
         header("location: /HIB/home.php");
@@ -28,12 +29,12 @@
         float: center;
     }
 
-    .btn {
+    /* .btn {
         background-color: #4CAF50;
         float: right;
         color: white;
         text-decoration: none;
-    }
+    } */
 
     table {
         font-family: arial, sans-serif;
@@ -78,8 +79,8 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-head-line">Payment Informations
-                    <button class="btn" align="center">
-                        <a href="addPayment.php" class="btn">Add Payment</a>
+                    <button class="btn" align="right">
+                        <a href="addPayment.php" class="btn btn-primary">Add Payment</a>
                     </button>
                 </h1>
             </div>

@@ -20,12 +20,12 @@
         float: center;
     }
 
-    .btn {
+    /* .btn {
         background-color: #4CAF50;
         float: right;
         color: white;
         text-decoration: none;
-    }
+    } */
 
     table {
         font-family: arial, sans-serif;
