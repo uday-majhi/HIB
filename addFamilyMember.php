@@ -3,7 +3,7 @@
 
 <head>
     <style>
-    input[type=text],
+    input,
     select {
         width: 100%;
         padding: 12px 20px;
@@ -59,7 +59,7 @@
 <?php include 'header.php';
 session_start();
 
-$client_insurance_no = $_SESSION["client_insurance_no"];
+$client_insurance_no = $_GET["client_insurance_no"] || $_SESSION["client_insurance_no"];
 $insurance_no;
 ?>
 <div id="page-wrapper">
@@ -79,7 +79,11 @@ $insurance_no;
                     if ($num_rows > 0) {
                         echo "Client: <select name=\"client_insurance_no\">";
                         while ($row = mysqli_fetch_assoc($result_set)) {
-                            echo "<option value=\"" . $row["client_insurance_no"] . "\">" . $row["full_name"] . "</option>";
+                            if($row["$client_insurance_no"] == $insurance_no){
+                                echo "<option value=\"" . $row["client_insurance_no"] . "\" selected>" . $row["full_name"] . "</option>";
+                            }else{
+                                echo "<option value=\"" . $row["client_insurance_no"] . "\">" . $row["full_name"] . "</option>";
+                            }
                         }
                         echo "</select>";
                     }

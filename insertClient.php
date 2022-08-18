@@ -28,7 +28,7 @@ session_start();
 	$affectedRows= mysqli_affected_rows($conn);
 	if($affectedRows>0){
 		$_SESSION['client_insurance_no'] = $insurance_no;
-		header('Location: /HIB/addFamilyMember.php');
+		header("Location: /HIB/addFamilyMember.php?client_insurance_no=$client_insurance_no");
     	exit();
 	}else{
 		echo "Error";
