@@ -111,4 +111,59 @@
 
 </body>
 
+<script>
+const insurance_no_element = document.querySelector('[name=client_insurance_no]');
+const email_element = document.querySelector('[name=email]');
+const citizenship_no_element = document.querySelector('[name=citizenship_no]');
+
+insurance_no_element.addEventListener('blur', handleInsuranceElement);
+email_element.addEventListener('blur', handleEmailElement);
+citizenship_no_element.addEventListener('blur', handleCitizenshipElement);
+
+async function handleInsuranceElement(e) {
+    const {
+        value
+    } = e.currentTarget;
+
+    const res = await fetch(`/HIB/api/insurance.php?table=client&client_insurance_no=${value}`);
+    const {
+        error
+    } = await res.json();
+
+    if (error) {
+        alert(error);
+    }
+}
+
+async function handleEmailElement(e) {
+    const {
+        value
+    } = e.currentTarget;
+
+    const res = await fetch(`/HIB/api/email.php?table=client&email=${value}`);
+    const {
+        error
+    } = await res.json();
+
+    if (error) {
+        alert(error);
+    }
+}
+
+async function handleCitizenshipElement(e) {
+    const {
+        value
+    } = e.currentTarget;
+
+    const res = await fetch(`/HIB/api/citizenship.php?table=client&citizenship=${value}`);
+    const {
+        error
+    } = await res.json();
+
+    if (error) {
+        alert(error);
+    }
+}
+</script>
+
 </html>

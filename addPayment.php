@@ -123,6 +123,23 @@ client_insurance_no_select.addEventListener('change', async e => {
 
     amount_element.value = amount_to_be_paid;
 })
+
+client_insurance_no_select.addEventListener('blur', handleInsuranceElement);
+
+async function handleInsuranceElement(e) {
+    const {
+        value
+    } = e.currentTarget;
+
+    const res = await fetch(`/HIB/api/insurance.php?table=payment&client_insurance_no=${value}`);
+    const {
+        error
+    } = await res.json();
+
+    if (error) {
+        alert(error);
+    }
+}
 </script>
 
 </body>

@@ -87,4 +87,25 @@
 
 </body>
 
+<script>
+const email_element = document.querySelector('[name=email]');
+
+email_element.addEventListener('blur', handleEmailElement);
+
+async function handleEmailElement(e) {
+    const {
+        value
+    } = e.currentTarget;
+
+    const res = await fetch(`/HIB/api/email.php?table=agent&email=${value}`);
+    const {
+        error
+    } = await res.json();
+
+    if (error) {
+        alert(error);
+    }
+}
+</script>
+
 </html>

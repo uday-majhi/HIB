@@ -121,3 +121,41 @@ $insurance_no;
         </div>
     </div>
 </div>
+
+<script>
+const family_insurance_no_element = document.querySelector('[name=family_member_insurance_no]');
+const identity_no_element = document.querySelector('[name=family_member_identity_no]');
+
+family_insurance_no_element.addEventListener('blur', handleInsuranceElement);
+identity_no_element.addEventListener('blur', handleIdentityElement);
+
+async function handleInsuranceElement(e) {
+    const {
+        value
+    } = e.currentTarget;
+
+    const res = await fetch(`/HIB/api/familyMembersInsurance.php?insurance_no=${value}`);
+    const {
+        error
+    } = await res.json();
+
+    if (error) {
+        alert(error);
+    }
+}
+
+async function handleIdentityElement(e) {
+    const {
+        value
+    } = e.currentTarget;
+
+    const res = await fetch(`/HIB/api/identity.php?identity=${value}`);
+    const {
+        error
+    } = await res.json();
+
+    if (error) {
+        alert(error);
+    }
+}
+</script>
