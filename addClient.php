@@ -70,7 +70,7 @@
                 Insurance no.: <input type="number" name="client_insurance_no" required><br>
                 Full Name: <input type="text" name="full_name" required><br>
                 Email: <input type="email" name="email" required><br>
-                Password: <input type="text" name="password" required><br>
+                Password: <input type="password" name="password" required><br>
                 Gender: <select name="gender" id="gender">
                     <option value="male">Male</option>
                     <option value="female">Female</option>

@@ -1,10 +1,10 @@
 <?php
-    session_start();
-    $role = $_SESSION["role"];
-    if($role !== "agent"){
-        header("location: /HIB/home.php");
-        exit();
-    }
+session_start();
+$role = $_SESSION["role"];
+if ($role !== "agent") {
+    header("location: /HIB/home.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -72,8 +72,9 @@
 </head>
 
 <body>
-    <?php include 'header.php'; 
-?>
+    <?php include 'header.php';
+    session_start();
+    ?>
     <div id="page-wrapper">
 
         <div class="row">
@@ -90,51 +91,64 @@
 
         <?php
 
-	
-	$sql = "SELECT receipt_no,client_insurance_no,date,amount,agent_email FROM payment";
-	$result = $conn->query($sql);
-	
-	echo "<table class=\"table\">\n";
-    echo "  <tr>\n";
-    echo "    <th>Receipt No.</th>\n";
-    echo "    <th>Client Insurance No.</th>\n";
-    echo "    <th>Date</th>\n";
-    echo "    <th>Amount</th>\n";
-	echo "    <th>Agent Email</th>\n";
-    echo "    <th>Action</th>\n";
-    echo "    <th>Remove Payment</th>\n";
-    echo "  </tr>";
-	
-	if ($result->num_rows > 0) {
-    // output data of each row
-	while($row = $result->fetch_assoc()) {
-		
-		echo "<tr>\n";
-		echo "    <td>".$row["receipt_no"]."</td>\n";
-		echo "    <td>".$row["client_insurance_no"]."</td>\n";
-		echo "    <td>".$row["date"]."</td>\n";
-		echo "    <td>".$row["amount"]."</td>\n";
-		echo "    <td>".$row["agent_email"]."</td>\n";
-        		
-		if($row["email"]== $username || "jyotirana@email.com" == $username){
-			echo "<td>"."<a href='editPayment.php?receipt_no=".$row["receipt_no"]. "'>Edit</a>"."</td>\n";
-		}else{
-			echo "<td>"."<a class=\"dis\" href='editPayment.php?receipt_no=".$row["receipt_no"]. "'>Edit</a>"."</td>\n";
-          
-		}
-        
-		echo "<td>"."<a href='deletePayment.php?receipt_no=".$row["receipt_no"]. "'>Delete</a>"."</td>\n";
-		
-	}
-	
-	echo "</table>\n";
-	echo "\n";
-	
-	} else {
-    echo "0 results";
-}
-$conn->close();
-?>
+
+        $sql = "SELECT receipt_no,client_insurance_no,date,amount,agent_email,status FROM payment";
+        $result = $conn->query($sql);
+
+        function getStatusButton($status, $client_insurance_no){
+            if($status === "APPROVED"){
+                return "<a style=\"margin-left: 0.5rem\" class=\"btn btn-primary\" disabled>APPROVED</a>";
+            }
+            if($status === "DECLINED"){
+                return "<a style=\"margin-left: 0.5rem\" class=\"btn btn-primary\" disabled>DECLINED</a>";
+            }
+
+            return "
+                <a href=\"paymentStatus.php?action=approve&client_insurance_no=" . $client_insurance_no . "\" style=\"margin-left: 0.5rem\" class=\"btn btn-primary\">Approve</a> 
+                <a href=\"paymentStatus.php?action=decline&client_insurance_no=" . $client_insurance_no . "\" style=\"margin-right: 0.5rem\" class=\"btn btn-primary\">Decline</a>";
+        }
+
+        echo "<table class=\"table\">\n";
+        echo "  <tr>\n";
+        echo "    <th>Receipt No.</th>\n";
+        echo "    <th>Client Insurance No.</th>\n";
+        echo "    <th>Date</th>\n";
+        echo "    <th>Amount</th>\n";
+        echo "    <th>Agent Email</th>\n";
+        echo "    <th>Status</th>\n";
+        echo "    <th>Action</th>\n";
+        echo "  </tr>";
+
+        if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+
+                echo "<tr>\n";
+                echo "    <td>" . $row["receipt_no"] . "</td>\n";
+                echo "    <td>" . $row["client_insurance_no"] . "</td>\n";
+                echo "    <td>" . $row["date"] . "</td>\n";
+                echo "    <td>" . $row["amount"] . "</td>\n";
+                echo "    <td>" . $row["agent_email"] . "</td>\n";
+                echo "    <td>" . $row["status"] . "</td>\n";
+
+                if ($_SESSION["email"] == "jyotirana@email.com") {
+                    echo "<td>
+                        <a class=\"btn btn-primary\" style=\"margin-right: 0.5rem\" href=\"editPayment.php?receipt_no=" . $row["receipt_no"] . "\">Edit</a>
+                    <a class=\"btn btn-primary\" href=\"deletePayment.php?receipt_no=" . $row["receipt_no"] . "\">Delete</a>" .
+                    getStatusButton($row["status"], $row["client_insurance_no"]).
+                        "</td>\n";
+                } else {
+                    echo "<td>Not Authorized</td>";
+                }
+            }
+
+            echo "</table>\n";
+            echo "\n";
+        } else {
+            echo "0 results";
+        }
+        $conn->close();
+        ?>
 
 
 

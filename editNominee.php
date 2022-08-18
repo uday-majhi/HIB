@@ -88,7 +88,7 @@
 	
 	if($_SERVER["REQUEST_METHOD"] == "GET"){
 		
-		$nominee_id = $_GET["nominee_id"];	
+		$insurance_no = $_GET["insurance_no"];	
 	}
 	
 	$sql = "SELECT * from nominee where nominee='$nominee'";
@@ -100,31 +100,30 @@
 	   
 	while($row = $result->fetch_assoc()) {
 		
-		echo "<label for=\"fname\">NOMINEE ID</label>";
-	    echo "<input type=\"text\" nominee_id=\"fname\" name=\"nominee_id\" placeholder=\"nominee id..\" value=\"$row[nominee_id]\">";
-		echo "<label for=\"fname\">CLIENT ID</label>";
-	    echo "<input type=\"text\" nominee_id=\"fname\" name=\"client_id\" placeholder=\"client id..\" value=\"$row[client_id]\">";
-		echo "<label for=\"fname\">NAME</label>";
-	    echo "<input type=\"text\" nominee_id=\"fname\" name=\"name\" placeholder=\"nominees Name..\" value=\"$row[name]\">";
-		echo "<label for=\"fname\">GENDER</label>";
-		echo "<input type=\"text\" nominee_id=\"fname\" name=\"sex\" placeholder=\"nominees gender..\" value=\"$row[sex]\">";
-		echo "<label for=\"fname\">BIRTH DATE</label>";
-		echo "<input type=\"text\" nominee_id=\"fname\" name=\"birth_date\" placeholder=\"nominees Birth Date..\" value=\"$row[birth_date]\">";
-		echo "<label for=\"fname\"identity_no</label>";
-		echo "<input type=\"text\" nominee_id=\"fname\" name=\identity_no\" placeholder=\"nominees identity_no..\" value=\"$rowidentity_no]\">";
-		echo "<label for=\"fname\">RELATIONSHIP</label>";
-		echo "<input type=\"text\" nominee_id=\"fname\" name=\"relationship\" placeholder=\"Relationship With Client..\" value=\"$row[relationship]\">";
-		echo "<label for=\"fname\">PRIORITY</label>";
-		echo "<input type=\"text\" nominee_id=\"fname\" name=\"priority\" placeholder=\"Priority..\" value=\"$row[priority]\">";
-		echo "<label for=\"fname\">PHONE</label>";
-		echo "<input type=\"text\" nominee_id=\"fname\" name=\"phone\" placeholder=\"nominees Phone..\" value=\"$row[phone]\">";
+		echo "<label for=\"fname\">Insurance No.</label>";
+	    echo "<input type=\"text\" insurance_no=\"fname\" name=\"insurance_no\" placeholder=\"nominee id..\" value=\"$row[insurance_no]\">";
+		echo "<label for=\"fname\">Client Insurance No.</label>";
+	    echo "<input type=\"text\" insurance_no=\"fname\" name=\"client_insurance_no\" placeholder=\"client insurance No..\" value=\"$row[client_insurance_no]\">";
+		echo "<label for=\"fname\">Name</label>";
+	    echo "<input type=\"text\" insurance_no=\"fname\" name=\"name\" placeholder=\"Name..\" value=\"$row[name]\">";
+		echo "<label for=\"fname\">Gender</label>";
+		echo "<input type=\"text\" insurance_no=\"fname\" name=\"gender\" placeholder=\"gender..\" value=\"$row[gender]\">";
+		echo "<label for=\"fname\">Birth Date</label>";
+		echo "<input type=\"text\" insurance_no=\"fname\" name=\"birth_date\" placeholder=\"Birth Date..\" value=\"$row[birth_date]\">";
+		echo "<label for=\"fname\">Identity_no</label>";
+		echo "<input type=\"text\" insurance_no=\"fname\" name=\identity_no\" placeholder=\"nominees identity_no..\" value=\"$row[identity_no]\">";
+		echo "<label for=\"fname\">Relationship</label>";
+		echo "<input type=\"text\" insurance_no=\"fname\" name=\"relationship\" placeholder=\"Relationship With Client..\" value=\"$row[relationship]\">";
+		echo "<label for=\"fname\">First Service Point</label>";
+		echo "<input type=\"text\" insurance_no=\"fname\" name=\"fsp\" placeholder=\"First Service Point..\" value=\"$row[fsp]\">";
+		
 		
     }
 	
 	
 	echo "<input type=\"submit\" value=\"UPDATE\">";
 	echo "</form>\n";
-	echo "<a href='deleteNominee.php?nominee_id=".$nominee_id."'>Delete Nominee</a>";
+	echo "<a href='deleteNominee.php?insurance_no=".$insurance_no."'>Delete Member</a>";
 	
 	
 	

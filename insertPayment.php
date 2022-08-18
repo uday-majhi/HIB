@@ -10,7 +10,7 @@ session_start();
 	    $agent_email       = $_POST["agent_email"];
 		
 		
-	$sql = "INSERT INTO payment (receipt_no, client_insurance_no, date, amount, agent_email) VALUES('$receipt_no','$client_insurance_no', '$date', '$amount', '$agent_email');";
+	$sql = "INSERT INTO payment (receipt_no, client_insurance_no, date, amount, agent_email, status) VALUES('$receipt_no','$client_insurance_no', '$date', '$amount', '$agent_email', 'PENDING');";
 	
 	try{
 		$resultSet= mysqli_query($conn, $sql);

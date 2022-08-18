@@ -110,7 +110,7 @@ include'connection.php';
 		echo "<label for=\"fname\">Date</label>";
 		echo "<input type=\"text\" receipt_no=\"fname\" name=\"date\" value=\"$row[date]\">";
         echo "<label for=\"fname\">Agent email</label>";
-		echo "<input type=\"text\" receipt_no=\"fname\" name=\"email\" value=\"$row[agent_email]\">";
+		echo "<input type=\"text\" receipt_no=\"fname\" name=\"agent_email\" value=\"$row[agent_email]\">";
 		
     }
 	

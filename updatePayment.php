@@ -85,20 +85,30 @@ include'connection.php';
 	
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		
-		$recipt_no                = $_POST["receipt_no"];
-		$client_insurance_no      = $_POST["client_insurance_number"];
+		$receipt_no               = $_POST["receipt_no"];
+		$client_insurance_no      = $_POST["client_insurance_no"];
 		$date                     = $_POST["date"];
 		$amount                   = $_POST["amount"];
 		$agent_email              = $_POST["agent_email"];
+
+        // echo($receipt_no);
+        // echo($client_insurance_no);
+        // echo($date);
+        // echo($amount);
+        // echo($agent_email);
 		
-	}
-	$sql = "UPDATE payment set receipt_no='$receipt_no' ,client_insurance_no='$client_insurance_no' ,date='$date',amount='$amount',agent_email='$agent_email' where receipt_no='$receipt_no'";
+        $sql = "UPDATE payment set receipt_no='$receipt_no' ,client_insurance_no='$client_insurance_no' ,date='$date',amount='$amount',agent_email='$agent_email' where receipt_no='$receipt_no'";
 		
 		if ($conn->query($sql) === true) {
-			echo "New record updated successfully";
+            //use message notification
+            // echo ("<script>
+            // alert(\"Updated successfully\");
+            // </script>");
+            header('location:payment.php');
 		} else {
-			echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $sql . "<br>" . $conn->error;
 		}
+    }
 		
 ?>
 
