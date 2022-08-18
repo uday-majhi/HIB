@@ -3,7 +3,7 @@
 
 <head>
     <style>
-    input[type=text],
+    input,
     select {
         width: 100%;
         padding: 12px 20px;
