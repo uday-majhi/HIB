@@ -3,7 +3,7 @@
 
 <head>
     <style>
-    input[type=text],
+    input,
     select {
         width: 100%;
         padding: 12px 20px;
@@ -80,9 +80,6 @@
             <?php
 	
 include'connection.php';
-
-
-
 $receipt_no  = $_GET["receipt_no"];
 
 // sql to delete a record
@@ -96,6 +93,7 @@ if ($conn->query($sql) === TRUE) {
 }
         
 $conn->close();
+
 ?>
 
 

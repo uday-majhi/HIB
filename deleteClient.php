@@ -3,7 +3,7 @@
 
 <head>
     <style>
-    input[type=text],
+    input,
     select {
         width: 100%;
         padding: 12px 20px;
@@ -78,44 +78,23 @@
 
 
             <?php
+            include 'connection.php';
+            $client_insurance_no  = $_GET["client_insurance_no"];
 
-            $client_insurance_no  = $_GET["$client_insurance_no "];
-            echo"Working";
-            echo "$client_insurance_no" ;
 
 // sql to delete client
-$sql = "DELETE FROM client WHERE $client_insurance_no ='$client_insurance_no '";
+$sql = "DELETE FROM client WHERE client_insurance_no='$client_insurance_no'";
+echo"$client_insurance_no";
 
 if ($conn->query($sql) === TRUE) {
     echo "Client deleted successfully";  echo '</br>';
 } else {
     echo "Error deleting Client: " . $conn->error;  echo '</br>';
 }
-
-// sql to delete nominees
-$sql = "DELETE FROM nominee WHERE client_id='$insurance_no'";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Nominees deleted successfully";  echo '</br>';
-} else {
-    echo "Error deleting Nominees: " . $conn->error;  echo '</br>';
-}
-
-// sql to delete payments
-$sql = "DELETE FROM payment WHERE client_id='$client_insurance_no'";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Payments deleted successfully";  echo '</br>';
-} else {
-    echo "Error deleting Payments: " . $conn->error;  echo '</br>';
-}
       
 $conn->close();		
 		
 ?>
-
-
-
 
         </div>
 

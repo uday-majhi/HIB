@@ -3,11 +3,11 @@
 
 <head>
     <style>
-    input[type=text],
+    input,
     select {
         width: 100%;
-        padding: 10px 13px;
-        margin: 3px 0;
+        padding: 12px 20px;
+        margin: 8px 0;
         display: inline-block;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -27,13 +27,6 @@
 
     input[type=submit]:hover {
         background-color: #45a049;
-    }
-
-    .btn {
-        background-color: #4CAF50;
-        float: right;
-        color: white;
-        text-decoration: none;
     }
 
 
@@ -56,88 +49,90 @@
     </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Nominee</title>
-
+    <title>Edit Client Member</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <link href="assets/css/basic.css" rel="stylesheet" />
     <link href="assets/css/custom.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
+<?php include 'header.php'; 
+$insurance_no = $_GET["insurance_no"];
+echo"$insurance_no";
 
-<body>
-    <?php include 'header.php'; 
+if($insurance_no){
+    $sql = "SELECT * FROM nominee WHERE insurance_no='$insurance_no'";
+    $resultSet = mysqli_query($conn, $sql);
+    $numRows = mysqli_num_rows($resultSet);
+
+    $details = $row = mysqli_fetch_assoc($resultSet);
+}
+
 ?>
-    <div id="page-wrapper">
+<div id="page-wrapper">
 
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="page-head-line">Nominee Information
-                    <button class="btn" align="center">
-                        <a href="addNominee.php" class="btn">Add Nominee</a>
-                    </button>
-                </h1>
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-head-line">Edit Member Client</h1>
+
+            <form action="updateNominee.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="insurance_no" value="<?php echo $insurance_no ?>" />
+
+                Insurance no.: <input type="number" name="insurance_no" value="<?php echo $details["insurance_no"]; ?>"
+                    readonly><br>
+                Full Name: <input type="text" name="full_name" value="<?php echo $details["full_name"]; ?>"
+                    required><br>
+                Gender: <select name="gender" id="gender" value="<?php echo $details["gender"]; ?>">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
+                </select>
+                Birth Date: <input type="date" name="birth_date" value="<?php echo $details["birth_date"]; ?>"
+                    required><br>
+                Identity No.: <input type="text" name="identity_no" value="<?php echo $details["identity_no"]; ?>"
+                    required><br>
+                Relationship: <input type="text" name="relationship" value="<?php echo $details["relationship"]; ?>"
+                    required><br>
+
+                First Service Point:
+                <select name="fsp" id="Fsp">
+                    <optgroup label="FSP">
+                        <option value="BPKIHS" <?php echo $details["fsp"] === 'BPKIHS' ? "selected" : "" ?>>
+                            B.P.K.I.H.S</option>
+                        <option value="Duhabi" <?php echo $details["fsp"] === "Duhabi" ? "selected" : "" ?>>
+                            Duhabi Nagar Aspatal</option>
+                        <option value="Saterjhora" <?php echo $details["fsp"] === "Saterjhora" ? "selected" : "" ?>>
+                            Saterjhora PHC
+                        </option>
+                        <option value="Ithari" <?php echo $details["fsp"] === "Ithari" ? "selected" : "" ?>>
+                            Ithari PHC</option>
+                        <option value="Inaruwa" <?php echo $details["fsp"] === "Inaruwa" ? "selected" : "" ?>>
+                            Inaruwa Hospital</option>
+                        <option value="Barahchetra" <?php echo $details["fsp"] === "Barahchetra" ? "selected" : "" ?>>
+                            Barahchetra Nagar
+                            Aspatal</option>
+                        <option value="Chatra PHC" <?php echo $details["fsp"] === "Chatra PHC" ? "selected" : "" ?>>
+                            Chatra PHC</option>
+                        <option value="Harinagra PHC"
+                            <?php echo $details["fsp"] === 'Harinagra PHC' ? "selected" : "" ?>>Harinagra PHC
+                        </option>
+                        <option value="Madhuban PHC" <?php echo $details["fsp"] === "Madhuban PHC" ? "selected" : "" ?>>
+                            Madhuban PHC
+                        </option>
+                    </optgroup>
+                </select>
+                Image <input class="img" type="file" name="client_image" value="<?php echo $details["image"]; ?>"
+                    required> </br>
+
+                <input type="submit" name="editNominee" value="Update Details" />
+
+            </form>
+
         </div>
 
-
-        <?php 
-
-   include'connection.php';
-	
-	
-	if($_SERVER["REQUEST_METHOD"] == "GET"){
-		
-		$insurance_no = $_GET["insurance_no"];	
-	}
-	
-	$sql = "SELECT * from nominee where nominee='$nominee'";
-	$result = $conn->query($sql);
-	
-	echo "<div>\n";
-	
-	  echo '<form action="updateNominee.php" method="post">';
-	   
-	while($row = $result->fetch_assoc()) {
-		
-		echo "<label for=\"fname\">Insurance No.</label>";
-	    echo "<input type=\"text\" insurance_no=\"fname\" name=\"insurance_no\" placeholder=\"nominee id..\" value=\"$row[insurance_no]\">";
-		echo "<label for=\"fname\">Client Insurance No.</label>";
-	    echo "<input type=\"text\" insurance_no=\"fname\" name=\"client_insurance_no\" placeholder=\"client insurance No..\" value=\"$row[client_insurance_no]\">";
-		echo "<label for=\"fname\">Name</label>";
-	    echo "<input type=\"text\" insurance_no=\"fname\" name=\"name\" placeholder=\"Name..\" value=\"$row[name]\">";
-		echo "<label for=\"fname\">Gender</label>";
-		echo "<input type=\"text\" insurance_no=\"fname\" name=\"gender\" placeholder=\"gender..\" value=\"$row[gender]\">";
-		echo "<label for=\"fname\">Birth Date</label>";
-		echo "<input type=\"text\" insurance_no=\"fname\" name=\"birth_date\" placeholder=\"Birth Date..\" value=\"$row[birth_date]\">";
-		echo "<label for=\"fname\">Identity_no</label>";
-		echo "<input type=\"text\" insurance_no=\"fname\" name=\identity_no\" placeholder=\"nominees identity_no..\" value=\"$row[identity_no]\">";
-		echo "<label for=\"fname\">Relationship</label>";
-		echo "<input type=\"text\" insurance_no=\"fname\" name=\"relationship\" placeholder=\"Relationship With Client..\" value=\"$row[relationship]\">";
-		echo "<label for=\"fname\">First Service Point</label>";
-		echo "<input type=\"text\" insurance_no=\"fname\" name=\"fsp\" placeholder=\"First Service Point..\" value=\"$row[fsp]\">";
-		
-		
-    }
-	
-	
-	echo "<input type=\"submit\" value=\"UPDATE\">";
-	echo "</form>\n";
-	echo "<a href='deleteNominee.php?insurance_no=".$insurance_no."'>Delete Member</a>";
-	
-	
-	
-echo "</div>\n";
-echo "\n";
-
-	
-?>
-
-
     </div>
 
-
-    </div>
+</div>
 
 </body>
 

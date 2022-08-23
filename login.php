@@ -24,7 +24,7 @@
 
 			header("Location: home.php");
 		}else{
-			echo "checking client...";
+			echo "checking user...";
 			$client_login_result_set= mysqli_query($conn, $client_login_query);
 			$client_num_rows= mysqli_num_rows($client_login_result_set);
 	

@@ -95,6 +95,7 @@ include'connection.php';
 	
 	$sql = "SELECT receipt_no, client_insurance_no, date , amount, agent_email from payment where receipt_no='$receipt_no'";
 	$result = $conn->query($sql);
+    
 	
 	echo "<div>\n";
 	
@@ -104,13 +105,13 @@ include'connection.php';
 		echo "<label for=\"fname\">Receipt Number</label>";
 	    echo "<input type=\"text\" receipt_no=\"fname\" name=\"receipt_no\" value=\"$row[receipt_no]\">";
 		echo "<label for=\"fname\">Client Insurance Number</label>";
-	    echo "<input type=\"text\" receipt_no=\"fname\" name=\"client_insurance_no\" value=\"$row[client_insurance_no]\">";
+	    echo "<input type=\"text\" receipt_no=\"fname\" name=\"client_insurance_no\" value=\"$row[client_insurance_no]\" disabled>";
 		echo "<label for=\"fname\">Amount</label>";
 		echo "<input type=\"text\" receipt_no=\"fname\" name=\"amount\"  value=\"$row[amount]\">";
 		echo "<label for=\"fname\">Date</label>";
 		echo "<input type=\"text\" receipt_no=\"fname\" name=\"date\" value=\"$row[date]\">";
         echo "<label for=\"fname\">Agent email</label>";
-		echo "<input type=\"text\" receipt_no=\"fname\" name=\"agent_email\" value=\"$row[agent_email]\">";
+		echo "<input type=\"text\" receipt_no=\"fname\" name=\"agent_email\" value=\"$row[agent_email]\" disabled >";
 		
     }
 	

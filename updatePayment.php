@@ -65,7 +65,7 @@
 </head>
 <?php include 'header.php'; 
 ?>
-<!-- /. NAV SIDE  -->
+
 <div id="page-wrapper">
 
     <div class="row">

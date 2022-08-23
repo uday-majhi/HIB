@@ -89,7 +89,7 @@ $client_id       = $_GET["client_id"];
 
                 Recipt No: <input type="text" name="receipt_no" required><br>
                 Date: <input type="date" name="date" required><br>
-                Amount: <input type="text" name="amount" required><br>
+                Amount: <input type="number" name="amount" required><br>
                 Agent Email: <input type="text" name="agent_email" value="<?php echo $_SESSION["email"]; ?>"
                     required><br>
 
