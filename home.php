@@ -135,6 +135,7 @@
                         <a href="/HIB/agent.php">
                             <h5>
                                 <?php
+
                                 $sql = "SELECT count(*) AS c FROM agent";
                                 $result = $conn->query($sql);
 
@@ -142,6 +143,7 @@
                                     echo "Total agents: ";
                                     echo $row["c"];
                                 }
+
                                 ?>
                             </h5>
                         </a>
@@ -151,6 +153,25 @@
         </div>
     </div>
 </div>
+
+<?php
+    session_start();
+     $errorMessage = $_SESSION["error"];
+
+     if($errorMessage && $errorMessage != null){
+         echo "<input type=\"hidden\" name=\"error\" value=\"$errorMessage\" />";
+     }
+
+     $_SESSION["error"] = null;
+?>
+
 </body>
+<script>
+const error = document.querySelector('[name="error"]');
+
+if (error) {
+    alert(error.value);
+}
+</script>
 
 </html>
