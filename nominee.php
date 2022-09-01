@@ -109,7 +109,7 @@
                 echo "    <td>" . $row["birth_date"] . "</td>\n";
                 echo "    <td>" . $row["relationship"] . "</td>\n";
                 echo "    <td>" . $row["fsp"] . "</td>\n";
-                echo "    <td>" . "<a href='clientStatus.php?client_insurance_no=" . $row["client_insurance_no"] . "'>Client Status</a>" ."|".
+                echo "    <td>" . "<a href='clientStatus.php?client_insurance_no=" . $row["client_insurance_no"] . "'>Client Status</a>" ."|"."<a href='deleteNominee.php?insurance_no=".$row["insurance_no"]. "'>Delete</a>"."|".
                 "<a href='editNominee.php?client_insurance_no=".$row["client_insurance_no"]. "'>Edit</a>". "</td>\n";
             }
 

@@ -19,7 +19,7 @@ include 'connection.php';
     
         $affectedRows= mysqli_affected_rows($conn);
         if($affectedRows>0){
-            echo "Agent created!";
+           $_SESSION['success']= 'Agent added succesfully';
             header("location:agent.php");
             exit();
         }else{

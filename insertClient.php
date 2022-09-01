@@ -16,6 +16,7 @@ session_start();
 		$agent_email               = $_POST["agent_email"];
 		$image                     = $_POST["client_image"];
 		$fsp                       = $_POST["fsp"];
+		$insertClientAndPay = $_POST['insertClientAndPay'];
 
 		$hashedPassword = md5($password);
 		
@@ -27,8 +28,11 @@ session_start();
 
 	$affectedRows= mysqli_affected_rows($conn);
 	if($affectedRows>0){
-		$_SESSION['client_insurance_no'] = $insurance_no;
-		header("Location: /HIB/addFamilyMember.php?client_insurance_no=$client_insurance_no");
+		$_SESSION['client_insurance_no'] = $client_insurance_no;
+
+		$redirect_to = isset($insertClientAndPay) ? '/HIB/addPayment.php?client_insurance_no='.$client_insurance_no  : '/HIB/addFamilyMember.php?client_insurance_no='.$client_insurance_no;
+
+        header('Location: '.$redirect_to);
     	exit();
 	}else{
 		echo "Error";

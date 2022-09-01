@@ -3,7 +3,7 @@
 
 <head>
     <style>
-    input[type=text],
+    input,
     select {
         width: 100%;
         padding: 12px 20px;
@@ -155,23 +155,10 @@
 </div>
 
 <?php
-    session_start();
-     $errorMessage = $_SESSION["error"];
-
-     if($errorMessage && $errorMessage != null){
-         echo "<input type=\"hidden\" name=\"error\" value=\"$errorMessage\" />";
-     }
-
-     $_SESSION["error"] = null;
+   include "messages.php";
 ?>
 
 </body>
-<script>
-const error = document.querySelector('[name="error"]');
-
-if (error) {
-    alert(error.value);
-}
-</script>
+<script src="messages.js"></script>
 
 </html>

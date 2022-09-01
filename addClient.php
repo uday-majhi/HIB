@@ -14,7 +14,8 @@
         box-sizing: border-box;
     }
 
-    input[type=submit] {
+    input[type=submit],
+    .makePayment {
         width: 100%;
         background-color: #4CAF50;
         color: white;
@@ -25,8 +26,13 @@
         cursor: pointer;
     }
 
-    input[type=submit]:hover {
+    input[type=submit]:hover,
+    .makePayment:hover {
         background-color: #45a049;
+    }
+
+    a[disabled] {
+        pointer-events: none;
     }
 
 
@@ -80,7 +86,15 @@
                 Citizenship no.: <input type="text" name="citizenship_no" required><br>
                 Mobile no.: <input type="number" name="mobile_no" required><br>
                 Address: <input type="text" name="address" required><br>
-                Policy ID: <input type="text" name="policy_id" required><br>
+                Policy ID:
+                <select name="policy_id" id="policy_id">
+                    <optgroup label="FSP">
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                    </optgroup>
+                </select>
                 Agent ID: <input type="text" name="agent_email" value="<?php echo $_SESSION["email"]; ?>" required><br>
                 Image <input class="img" type="file" name="client_image" required> </br>
                 First Service Point:
@@ -98,7 +112,8 @@
                     </optgroup>
                 </select>
 
-                <input type="submit" name="insertClient" value="Submit" />
+                <input type="submit" name="insertClient" value="Submit and add Family Members" />
+                <input type="submit" disabled name="insertClientAndPay" value="Submit and Pay" />
 
             </form>
 
@@ -115,6 +130,7 @@
 const insurance_no_element = document.querySelector('[name=client_insurance_no]');
 const email_element = document.querySelector('[name=email]');
 const citizenship_no_element = document.querySelector('[name=citizenship_no]');
+const insertClientAndPay = document.querySelector('[name=insertClientAndPay]');
 
 insurance_no_element.addEventListener('blur', handleInsuranceElement);
 email_element.addEventListener('blur', handleEmailElement);
@@ -132,6 +148,11 @@ async function handleInsuranceElement(e) {
 
     if (error) {
         alert(error);
+    }
+
+    // enable the makePayment button(link)
+    if (value && !error) {
+        insertClientAndPay.removeAttribute("disabled");
     }
 }
 

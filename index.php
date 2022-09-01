@@ -18,13 +18,14 @@ if(isset($_SESSION["email"])){
     }
 
     .login-page {
-        width: 360px;
-        padding: 8% 0 0;
+        width: 455px;
+        padding: 20% 0 0;
         margin: auto;
     }
 
     .form {
         padding-top: 30px;
+        border-radius: 1rem;
         position: relative;
         z-index: 1;
         background: #FFFFFF;
@@ -80,13 +81,14 @@ if(isset($_SESSION["email"])){
     </style>
     <title>Login Page</title>
 </head>
-<center>
-    <h1 style="color:#ADD8E6">HEALTH INSURANCE BOARD</h1>
-    <img src="./pics/pic.jpg" alt="">
-</center>
+
 <div class="container">
+
     <div class="login-page">
         <div class="form">
+            <center>
+                <h1 style="color:#ADD8E6">Health Insurance Board</h1>
+            </center>
             <form class="login-form" action="login.php" method="POST">
                 <input type="email" name="email" id="" placeholder="email" />
                 <input type="password" name="password" id="" placeholder="password" />

@@ -87,7 +87,7 @@ $email  = $_GET["email"];
 $sql = "DELETE FROM agent WHERE email='$email'";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Record deleted successfully";
+    $_SESSION['success']='Agent deleted successfully';
     header('Location: /HIB/agent.php');
 } else {
     echo "Error deleting record: " . $conn->error;

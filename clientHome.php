@@ -9,7 +9,7 @@
 	$username = $_SESSION["email"];
 ?>
     <style>
-    input[type=text],
+    input,
     select {
         width: 100%;
         padding: 8px 12px;
@@ -69,7 +69,7 @@
 
             <div class="navbar-header">
 
-                <a class="navbar-brand" href="index.php">Surya Life Insurance</a>
+                <a class="navbar-brand" href="index.php">Health Insurance Board</a>
             </div>
 
             <div class="header-right">
@@ -78,7 +78,6 @@
 
             </div>
         </nav>
-        <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">

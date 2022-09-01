@@ -8,9 +8,11 @@ session_start();
 	    $date                      = $_POST["date"];
 	    $amount                    = $_POST["amount"];
 	    $agent_email               = $_POST["agent_email"];
+		$status = $_SESSION["email"] === "jyotirana@email.com" ? "APPROVED" : "PENDING";
+
 		
 		
-	$sql = "INSERT INTO payment (receipt_no, client_insurance_no, date, amount, agent_email, status) VALUES('$receipt_no','$client_insurance_no', '$date', '$amount', '$agent_email', 'PENDING');";
+	$sql = "INSERT INTO payment (receipt_no, client_insurance_no, date, amount, agent_email, status) VALUES('$receipt_no','$client_insurance_no', '$date', '$amount', '$agent_email', '$status');";
 	
 	try{
 		$resultSet= mysqli_query($conn, $sql);
@@ -18,6 +20,8 @@ session_start();
 	$affectedRows= mysqli_affected_rows($conn);
 
 	if($affectedRows>0){
+		$_SESSION["success"] = "Client and payment successfully added!";
+
 		header('Location: /HIB/home.php');
     	exit();
 	}else{

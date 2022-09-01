@@ -56,70 +56,80 @@
     <link href="assets/css/custom.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
-<?php include 'header.php';
+<?php
+ include 'header.php';
 session_start();
 
-$client_insurance_no = $_GET["client_insurance_no"] || $_SESSION["client_insurance_no"];
+$client_insurance_no = $_GET["client_insurance_no"] ? $_GET["client_insurance_no"] : $_SESSION["client_insurance_no"];
 $insurance_no;
+
 ?>
 <div id="page-wrapper">
 
     <div class="row">
         <div class="col-md-12">
-            <h1 class="page-head-line">Family Informations</h1>
+            <h1 class="page-head-line">Add Family Informations</h1>
 
             <form action="insertFamilyMember.php" method="post" enctype="multipart/form-data">
-                <?php
+                <fieldset class="family_form_wrapper">
+                    <?php
                 $insurance_no = $client_insurance_no;
-                if (!isset($insurance_no)) {
-                    $sql = "SELECT full_name, client_insurance_no FROM client";
+                    $sql = "SELECT full_name, client_insurance_no FROM client WHERE client_insurance_no='$insurance_no'";
                     $result_set = mysqli_query($conn, $sql);
                     $num_rows = mysqli_num_rows($result_set);
 
                     if ($num_rows > 0) {
-                        echo "Client: <select name=\"client_insurance_no\">";
-                        while ($row = mysqli_fetch_assoc($result_set)) {
-                            if($row["$client_insurance_no"] == $insurance_no){
-                                echo "<option value=\"" . $row["client_insurance_no"] . "\" selected>" . $row["full_name"] . "</option>";
-                            }else{
-                                echo "<option value=\"" . $row["client_insurance_no"] . "\">" . $row["full_name"] . "</option>";
-                            }
-                        }
-                        echo "</select>";
+                        $row = mysqli_fetch_assoc($result_set);
+                        $client_name = $row["full_name"];
+                        echo "Client($client_name): <input type=\"number\" name=\"client_insurance_no\" value=\"$insurance_no\" readonly />";
                     }
-                }
                 ?>
-                Insurance no.: <input type="number" name="family_member_insurance_no" required> <br>
-                Name: <input type="text" name="family_member_name" required><br>
-                Gender: <select name="family_member_gender" id="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="others">Others</option>
-                </select>
-                Birth Date: <input type="date" name="family_member_birth_date" required><br>
-                Identity no: <input type="text" name="family_member_identity_no" required><br>
-                Relationship: <input type="text" name="family_member_relationship" required><br>
-                Image: <input class="img" type="file" name="family_member_image" required> <br>
-                First Service Point:
-                <select name="family_member_fsp" id="Fsp">
-                    <optgroup label="FSP">
-                        <option value="BPKIHS">B.P.K.I.H.S</option>
-                        <option value="Duhabi">Duhabi Nagar Aspatal</option>
-                        <option value="Saterjhora">Saterjhora PHC</option>
-                        <option value="Ithari">Ithari PHC</option>
-                        <option value="Inaruwa">Inaruwa Hospital</option>
-                        <option value="Barahchetra">Barahchetra Nagar Aspatal</option>
-                        <option value="Chatra PHC">Chatra PHC</option>
-                        <option value="Harinagra PHC">Harinagra PHC </option>
-                        <option value="Madhuban PHC">Madhuban PHC</option>
-                    </optgroup>
-                </select>
+                    Insurance no.: <input type="number" name="family_member_insurance_no" required> <br>
+                    Name: <input type="text" name="family_member_name" required><br>
+                    Gender: <select name="family_member_gender" id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="others">Others</option>
+                    </select>
+                    Birth Date: <input type="date" name="family_member_birth_date" required><br>
+                    Identity no: <input type="text" name="family_member_identity_no" required><br>
+                    Relationship: <input type="text" name="family_member_relationship" required>
+                    <select name="family_member_relationship" id="Fsp">
+                        <optgroup label="FSP">
+                            <option value="BPKIHS">B.P.K.I.H.S</option>
+                            <option value="Duhabi">Duhabi Nagar Aspatal</option>
+                            <option value="Saterjhora">Saterjhora PHC</option>
+                            <option value="Ithari">Ithari PHC</option>
+                            <option value="Inaruwa">Inaruwa Hospital</option>
+                            <option value="Barahchetra">Barahchetra Nagar Aspatal</option>
+                            <option value="Chatra PHC">Chatra PHC</option>
+                            <option value="Harinagra PHC">Harinagra PHC </option>
+                            <option value="Madhuban PHC">Madhuban PHC</option>
+                        </optgroup>
+                    </select>
+                    <br>
+                    Image: <input class="img" type="file" name="family_member_image" required> <br>
+                    First Service Point:
+                    <select name="family_member_fsp" id="Fsp">
+                        <optgroup label="FSP">
+                            <option value="BPKIHS">B.P.K.I.H.S</option>
+                            <option value="Duhabi">Duhabi Nagar Aspatal</option>
+                            <option value="Saterjhora">Saterjhora PHC</option>
+                            <option value="Ithari">Ithari PHC</option>
+                            <option value="Inaruwa">Inaruwa Hospital</option>
+                            <option value="Barahchetra">Barahchetra Nagar Aspatal</option>
+                            <option value="Chatra PHC">Chatra PHC</option>
+                            <option value="Harinagra PHC">Harinagra PHC </option>
+                            <option value="Madhuban PHC">Madhuban PHC</option>
+                        </optgroup>
+                    </select>
 
-                <div class="mt-2">
-                    <button class="btn btn-success" type="submit" name="insertFamilyMember">Submit</button>
-                    <button class="btn btn-success" type="submit" name="insertFamilyMember_and_pay">Submit and Make
-                        Payment</button>
-                </div>
+                    <div class="mt-2">
+                        <input class="btn btn-success" type="submit" name="insertFamilyMember" value="Submit" />
+                        <input class="btn btn-success" type="submit" name="insertFamilyMember_and_pay" value="Submit and Make
+                        Payment" />
+                    </div>
+                </fieldset>
             </form>
 
         </div>
@@ -129,6 +139,25 @@ $insurance_no;
 <script>
 const family_insurance_no_element = document.querySelector('[name=family_member_insurance_no]');
 const identity_no_element = document.querySelector('[name=family_member_identity_no]');
+const family_form_wrapper = document.querySelector('.family_form_wrapper');
+
+const submitBtns = Array.from(document.querySelectorAll('[type="submit"]'));
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const searchParams = new URL(document.location).searchParams;
+    const insurance_no = searchParams.get("client_insurance_no");
+
+    const res = await fetch(`/HIB/api/familyMembersCount.php?insurance_no=${insurance_no}`);
+    const {
+        count
+    } = await res.json();
+
+    if (count >= 10) {
+        family_form_wrapper.setAttribute("disabled", "disabled");
+        family_form_wrapper.setAttribute("title", "DISABLED: The family member's count must not exceed 9");
+    }
+
+})
 
 family_insurance_no_element.addEventListener('blur', handleInsuranceElement);
 identity_no_element.addEventListener('blur', handleIdentityElement);
@@ -138,7 +167,7 @@ async function handleInsuranceElement(e) {
         value
     } = e.currentTarget;
 
-    const res = await fetch(`/HIB/api/familyMembersInsurance.php?insurance_no=${value}`);
+    const res = await fetch(`/HIB/api/familyMemberInsurance.php?insurance_no=${value}`);
     const {
         error
     } = await res.json();

@@ -23,6 +23,8 @@ try {
 	$resultSet = mysqli_query($conn, $sql);
 	$affectedRows = mysqli_affected_rows($conn);
 	if ($affectedRows > 0) {
+		$_SESSION["success"] = "Client updated successfully!";
+		
 		header('Location: /HIB/client.php');
     	exit();
 	}

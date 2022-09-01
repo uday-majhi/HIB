@@ -33,10 +33,10 @@
 								?>
             </div>
 
-            <a href="client.php" class="btn btn-primary">Clients</a>
-            <a href="agent.php" class="btn btn-primary">Agents</a>
+            <a href="addClient.php" class="btn btn-primary">Add Clients</a>
+            <a href="addAgent.php" class="btn btn-primary">Add Agents</a>
             <a href=" policy.php" class="btn btn-primary">Policy</a>
-            <a href=" payment.php" class="btn btn-primary">Payments</a>
+
 
 
             <div class=" header-right">

@@ -88,9 +88,6 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-head-line">Client Informations
-                    <button class="btn btn-success" align="center">
-                        <a href="addClient.php" class="btn">Add Client</a>
-                    </button>
                 </h1>
             </div>
         </div>
@@ -138,17 +135,24 @@
 		echo "    <td>".$row["policy_id"]."</td>\n";
 		echo "    <td>".$row["agent_email"]."</td>\n";
 		echo "    <td>".$row["fsp"]."</td>\n";
-		echo "<td>".
+		if($_SESSION["email"] === $row["agent_email"] || $_SESSION["email"] === "jyotirana@email.com"){
+            echo "<td>".
                 "<a href='editClient.php?client_insurance_no=".$row["client_insurance_no"]. "'>Edit</a>"."|".
                 "<a href='clientStatus.php?client_insurance_no=".$row["client_insurance_no"]. "'>Status</a>"."|".
-                "<a href='deleteClient.php?client_insurance_no=".$row["client_insurance_no"]. "'>Delete</a>".
+                "<a href='/HIB/addPayment.php?client_insurance_no=".$row["client_insurance_no"]. "'>Renew</a>".
              "</td>\n";
+        }else{
+            echo "<td>N/A</td>";
+        }
 
 	}
 	}
 ?>
 
     </div>
+
+    <?php include "messages.php"; ?>
+    <script src="messages.js"></script>
 
 </body>
 

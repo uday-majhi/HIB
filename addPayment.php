@@ -57,11 +57,9 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <?php include 'header.php'; 
-$uniqueId = time().'_'.mt_rand();
-if(isset($_GET["client_id"])){
-$client_id       = $_GET["client_id"];
-}else{ $client_id="";
-}
+
+$client_insurance_no = $_GET["client_insurance_no"];
+
 ?>
 <div id="page-wrapper">
 
@@ -73,17 +71,15 @@ $client_id       = $_GET["client_id"];
 
             <form action="insertPayment.php" method="post">
                 <?php
-                    $sql = "SELECT full_name, client_insurance_no FROM client";
+                    $sql = "SELECT full_name, client_insurance_no FROM client WHERE client_insurance_no='$client_insurance_no'";
+                    
                     $result_set = mysqli_query($conn, $sql);
                     $num_rows = mysqli_num_rows($result_set);
 
                     if ($num_rows > 0) {
-                        echo "Client: <select name=\"client_insurance_no\">";
-                        echo "<option selected>--Select a Client--</option>";
-                        while ($row = mysqli_fetch_assoc($result_set)) {
-                            echo "<option value=\"" . $row["client_insurance_no"] . "\">" . $row["full_name"] . "</option>";
-                        }
-                        echo "</select>";
+                        $row = mysqli_fetch_assoc($result_set);
+                        $client_name = $row["full_name"];
+                        echo "Client($client_name): <input type=\"number\" name=\"client_insurance_no\" value=\"$client_insurance_no\" />";
                     }
                 ?>
 
@@ -110,7 +106,7 @@ $client_id       = $_GET["client_id"];
 const client_insurance_no_select = document.querySelector('[name=client_insurance_no]');
 const amount_element = document.querySelector('[name=amount]');
 
-client_insurance_no_select.addEventListener('change', async e => {
+document.addEventListener('DOMContentLoaded', async e => {
     const {
         value: insurance_no
     } = e.currentTarget;

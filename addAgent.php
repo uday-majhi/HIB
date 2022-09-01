@@ -1,3 +1,7 @@
+<?php 
+  include "authorize.php";
+?>
+
 <!DOCTYPE html>
 <html>
 

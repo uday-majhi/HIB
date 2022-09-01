@@ -5,6 +5,7 @@
         ("location: /HIB/home.php");
         exit();
     }
+    include "authorize.php";
 ?>
 
 <!DOCTYPE html>
@@ -81,9 +82,9 @@
                 <h1 class="page-head-line">Agents Information
                     <?php    
 			if ($_SESSION["email"]=="jyotirana@email.com") {
-			echo '<button class="btn btn-success" align="center">';
-            echo '<a href="addAgent.php" class="btn btn-success">Add Agent</a>';
-            echo '</button>';
+			// echo '<button class="btn btn-success" align="center">';
+            // echo '<a href="addAgent.php" class="btn btn-success">Add Agent</a>';
+            // echo '</button>';
 			}
 			?>
                 </h1>
@@ -128,7 +129,8 @@ $conn->close();
 
     </div>
     </div>
-
+    <?php include "messages.php"; ?>
+    <script src="messages.js"></script>
 </body>
 
 </html>

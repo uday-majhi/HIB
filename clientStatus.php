@@ -86,7 +86,7 @@
 
 
         <?php
-
+     
 		$client_insurance_no = $_GET["client_insurance_no"];
 
 	$sql = "SELECT c.client_insurance_no, c.full_name, c.gender, c.mobile_no, c.address, c.policy_id, c.agent_email, c.fsp, p.policy_name, pay.date FROM client c LEFT JOIN policy p ON p.policy_id = c.policy_id LEFT JOIN payment pay ON pay.client_insurance_no = c.client_insurance_no WHERE c.client_insurance_no = '$client_insurance_no';";

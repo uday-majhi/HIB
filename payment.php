@@ -80,9 +80,7 @@ if ($role !== "agent") {
         <div class="row">
             <div class="col-md-12">
                 <h1 class="page-head-line">Payment Informations
-                    <button class="btn btn-primary" align="right">
-                        <a href="addPayment.php" class="btn btn-primary">Add Payment</a>
-                    </button>
+
                 </h1>
             </div>
         </div>
